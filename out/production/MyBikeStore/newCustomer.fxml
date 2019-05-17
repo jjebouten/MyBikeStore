@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.BikeStore.Presentation.Customer.NewCustomerPresentation"
+      maxHeight="-Infinity"
+      maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
+    <children>
+        <TextField fx:id="txtFirstname" layoutX="129.0" layoutY="103.0"/>
+        <TextField fx:id="txtLastname" layoutX="129.0" layoutY="141.0"/>
+        <TextField fx:id="txtAddress" layoutX="129.0" layoutY="178.0"/>
+        <TextField fx:id="txtCity" layoutX="129.0" layoutY="214.0"/>
+        <TextField fx:id="txtEmail" layoutX="129.0" layoutY="249.0"/>
+        <Label layoutX="14.0" layoutY="14.0" text="New Customer"/>
+        <Label layoutX="14.0" layoutY="108.0" text="Firstname"/>
+        <Label layoutX="14.0" layoutY="146.0" text="Lastname"/>
+        <Label layoutX="14.0" layoutY="183.0" text="Address"/>
+        <Label layoutX="14.0" layoutY="219.0" text="City"/>
+        <Label layoutX="14.0" layoutY="254.0" text="Email"/>
+        <Button layoutX="226.0" layoutY="289.0" mnemonicParsing="false" text="Register" onAction="#registerCustomer"/>
+    </children>
+</Pane>

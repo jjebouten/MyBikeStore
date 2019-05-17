@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.BikeStore.Presentation.Bike.MountainBikePresentation"
+      maxHeight="-Infinity"
+      maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
+    <children>
+
+        <TableView fx:id="tableView" layoutX="10.0" layoutY="10.0" prefHeight="650.0" prefWidth="1000.0">
+            <columns>
+                <TableColumn prefWidth="50.0" text="bikeId" fx:id="bikeId"/>
+                <TableColumn prefWidth="125.0" text="bikeBrand" fx:id="bikeBrand"/>
+                <TableColumn prefWidth="150.0" text="bikeType" fx:id="bikeType"/>
+                <TableColumn prefWidth="200.0" text="rimSize" fx:id="rimSize"/>
+                <TableColumn prefWidth="150.0" text="numberOfGears" fx:id="numberOfGears"/>
+                <TableColumn prefWidth="150.0" text="dateLastTask" fx:id="dateLastTask"/>
+                <TableColumn prefWidth="150.0" text="suspension" fx:id="suspension"/>
+            </columns>
+        </TableView>
+
+    </children>
+</Pane>

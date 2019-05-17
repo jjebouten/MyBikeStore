@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.BikeStore.Presentation.Customer.CustomerPresentation"
+      maxHeight="-Infinity"
+      maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
+    <children>
+
+        <TableView fx:id="tableView" layoutX="10.0" layoutY="10.0" prefHeight="650.0" prefWidth="1000.0">
+            <columns>
+                <TableColumn prefWidth="50.0" text="UserId" fx:id="customerId"/>
+                <TableColumn prefWidth="125.0" text="UserName" fx:id="firstName"/>
+                <TableColumn prefWidth="150.0" text="lastName" fx:id="lastName"/>
+                <TableColumn prefWidth="200.0" text="address" fx:id="address"/>
+                <TableColumn prefWidth="150.0" text="city" fx:id="city"/>
+                <TableColumn prefWidth="300.0" text="email" fx:id="email"/>
+            </columns>
+        </TableView>
+
+    </children>
+</Pane>
+
+
