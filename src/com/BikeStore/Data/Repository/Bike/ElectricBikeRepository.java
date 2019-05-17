@@ -32,7 +32,7 @@ public class ElectricBikeRepository extends QueryBuilder {
                         result.getString("BikeType"),
                         result.getDouble("RimSize"),
                         result.getInt("NumberOfGears"),
-                        result.getDate("DateLastTask"),
+                        result.getString("DateLastTask"),
                         result.getDouble("BikePower"));
                 queryResult.add(electricBike);
             }

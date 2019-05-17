@@ -1,6 +1,6 @@
 package com.BikeStore.Data.Modal;
 
-import java.util.Date;
+import java.sql.Date;
 
 public interface BikeInterface {
 
@@ -14,7 +14,7 @@ public interface BikeInterface {
 
     int getNumberOfGears();
 
-    Date getDateLastTask();
+    String getDateLastTask();
 }
 
 

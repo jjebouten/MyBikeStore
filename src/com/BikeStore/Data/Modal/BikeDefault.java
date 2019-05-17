@@ -1,16 +1,14 @@
 package com.BikeStore.Data.Modal;
 
-import java.util.Date;
-
 public abstract class BikeDefault implements BikeInterface {
     private int bikeId;
     private String bikeBrand;
     private String bikeType;
     private double rimSize;
     private int numberOfGears;
-    private Date dateLastTask;
+    private String dateLastTask;
 
-    public BikeDefault(int bikeId, String bikeBrand, String bikeType, double rimSize, int numberOfGears, Date dateLastTask) {
+    public BikeDefault(int bikeId, String bikeBrand, String bikeType, double rimSize, int numberOfGears, String dateLastTask) {
         this.bikeId = bikeId;
         this.bikeBrand = bikeBrand;
         this.bikeType = bikeType;
@@ -45,7 +43,7 @@ public abstract class BikeDefault implements BikeInterface {
     }
 
     @Override
-    public Date getDateLastTask() {
+    public String getDateLastTask() {
         return dateLastTask;
     }
 }

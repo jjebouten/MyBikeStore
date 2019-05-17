@@ -1,5 +1,6 @@
 package com.BikeStore.Presentation.ActionComponents;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -7,10 +8,10 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class MenuLogic {
+public class MenuPresentation {
 
     @FXML
-    AnchorPane content;
+    public AnchorPane content;
 
     private void setNewContent(Pane newContent) {
         try {
@@ -73,6 +74,24 @@ public class MenuLogic {
     @FXML
     private void viewNewTask() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/newTasks.fxml"));
+        Pane newContent = fxmlLoader.load();
+        setNewContent(newContent);
+    }
+
+    public void viewNewCityBikes() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/newCityBike.fxml"));
+        Pane newContent = fxmlLoader.load();
+        setNewContent(newContent);
+    }
+
+    public void viewNewMountainBikes() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/newMountainBike.fxml"));
+        Pane newContent = fxmlLoader.load();
+        setNewContent(newContent);
+    }
+
+    public void viewNewElectricBikes() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/newElectricBike.fxml"));
         Pane newContent = fxmlLoader.load();
         setNewContent(newContent);
     }

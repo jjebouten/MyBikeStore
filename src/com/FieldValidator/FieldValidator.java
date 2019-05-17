@@ -1,5 +1,8 @@
 package com.FieldValidator;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class FieldValidator {
 
     public static boolean isValidEmailAddress(String email) {
@@ -21,4 +24,22 @@ public class FieldValidator {
         return number > 0;
     }
 
+    public static boolean StringIsInteger(String s) {
+        return s.matches("[-+]?[0-9]+");
+    }
+
+    public static boolean StringIsDouble(String s) {
+        return s.matches("[-+]?([0-9]+\\.([0-9]+)?|\\.[0-9]+)");
+    }
+
+    public static boolean isThisDateValid(String StringDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(StringDate.trim());
+        } catch (ParseException pe) {
+            return false;
+        }
+        return true;
+    }
 }

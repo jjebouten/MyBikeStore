@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.BikeStore.Presentation.Bike.NewCityBikePresentation">
+    <children>
+        <TextField fx:id="txtBikeId" layoutX="133.0" layoutY="41.0"/>
+        <TextField fx:id="txtBikeBrand" layoutX="133.0" layoutY="79.0"/>
+        <TextField fx:id="txtRimSize" layoutX="133.0" layoutY="152.0"/>
+        <TextField fx:id="txtNumberofGears" layoutX="133.0" layoutY="187.0"/>
+        <DatePicker fx:id="dpDateLastTask" layoutX="133.0" layoutY="227.0"/>
+        <CheckBox fx:id="cbxBikeBags" layoutX="133.0" layoutY="266.0" mnemonicParsing="false" text="Yes"/>
+        <Label layoutX="173.0" layoutY="14.0" text="New City Bike"/>
+        <Label layoutX="18.0" layoutY="46.0" text="bikeId"/>
+        <Label layoutX="18.0" layoutY="84.0" text="bikeBrand"/>
+        <Label layoutX="18.0" layoutY="157.0" text="rimSize"/>
+        <Label layoutX="14.0" layoutY="192.0" text="numberOfGears"/>
+        <Label layoutX="14.0" layoutY="232.0" text="dateLastTask"/>
+        <Label layoutX="12.0" layoutY="267.0" text="BikeBags"/>
+        <Button layoutX="147.0" layoutY="342.0" mnemonicParsing="false" onAction="#registerNewCityBike"
+                text="Register City Bike"/>
+    </children>
+</Pane>

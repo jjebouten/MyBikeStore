@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="com.BikeStore.Presentation.ActionComponents.MenuLogic">
+            fx:controller="com.BikeStore.Presentation.ActionComponents.MenuPresentation">
     <top>
         <VBox prefHeight="30.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
@@ -30,6 +30,15 @@
                                 <MenuItem mnemonicParsing="false" onAction="#viewAllElectricBikes"
                                           text="All Electric Bikes"/>
                                 <MenuItem mnemonicParsing="false" onAction="#viewNewBike" text="New Bike"/>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="New Bike">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#viewNewCityBikes" text="New City Bike"/>
+                                <MenuItem mnemonicParsing="false" onAction="#viewNewMountainBikes"
+                                          text="New Mountain Bike"/>
+                                <MenuItem mnemonicParsing="false" onAction="#viewNewElectricBikes"
+                                          text="New Electric Bike"/>
                             </items>
                         </Menu>
                     </menus>

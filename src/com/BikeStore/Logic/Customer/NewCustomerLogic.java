@@ -3,7 +3,7 @@ package com.BikeStore.Logic.Customer;
 import com.BikeStore.Data.Modal.Customer;
 import com.BikeStore.Data.Repository.Customer.CustomerRepository;
 
-import static com.BikeStore.Presentation.ActionComponents.AlertLogic.alertError;
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
 import static com.FieldValidator.FieldValidator.isNullOrEmptyString;
 import static com.FieldValidator.FieldValidator.isValidEmailAddress;
 

@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.BikeStore.Presentation.ActionComponents.AlertLogic.alertSucces;
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
 
 public class NewCustomerPresentation implements Initializable {
 

@@ -2,7 +2,7 @@ package com.BikeStore.Presentation.ActionComponents;
 
 import javafx.scene.control.Alert;
 
-public class AlertLogic {
+public class AlertPresentation {
 
     public static void alertSucces(String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
