@@ -1,5 +1,6 @@
 package com.BikeStore.Data.Repository.Bike;
 
+import com.BikeStore.Data.Modal.BikeDefault;
 import com.BikeStore.Data.Repository.QueryBuilder;
 
 import java.sql.Connection;
@@ -35,6 +36,5 @@ public class BikeDefaultRepository extends QueryBuilder {
         }
         return exists;
     }
-
 
 }

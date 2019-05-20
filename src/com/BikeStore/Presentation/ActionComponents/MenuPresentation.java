@@ -95,4 +95,16 @@ public class MenuPresentation {
         Pane newContent = fxmlLoader.load();
         setNewContent(newContent);
     }
+
+    public void viewNewReparation() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/newTaskReparation.fxml"));
+        Pane newContent = fxmlLoader.load();
+        setNewContent(newContent);
+    }
+
+    public void viewNewDelivery() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/newTaskDelivery.fxml"));
+        Pane newContent = fxmlLoader.load();
+        setNewContent(newContent);
+    }
 }

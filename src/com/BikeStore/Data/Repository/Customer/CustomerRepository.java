@@ -74,7 +74,36 @@ public class CustomerRepository extends QueryBuilder {
         }
     }
 
+    public Customer getCustomerById(int customerId) {
+
+        String query = getAllByFieldThroughInt(Table, "CustomerId", customerId);
+        Customer customer = new Customer(customerId, "", "", "", "", "");
+        Connection conn = ConnectDB();
+        try {
+            // create the java statement
+            Statement st = conn.createStatement();
+
+            // execute the query, and get a java resultset
+            ResultSet result = st.executeQuery(query);
+
+            // iterate through the java resultset
+            while (result.next()) {
+                customer.setFirstName(result.getString("FirstName"));
+                customer.setLastName(result.getString("LastName"));
+                customer.setAddress(result.getString("Address"));
+                customer.setCity(result.getString("City"));
+                customer.setEmail(result.getString("Email"));
+            }
+            st.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+        return customer;
+    }
+
     public int getMaxCustomerId() {
         return getMax(Table, "customerId");
     }
+
 }

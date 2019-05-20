@@ -4,6 +4,7 @@ import com.BikeStore.Database;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class QueryBuilder extends Database implements QueryBuilderInterface {
 
@@ -37,6 +38,25 @@ public class QueryBuilder extends Database implements QueryBuilderInterface {
             System.err.println(e.getMessage());
         }
         return max;
+    }
+
+    public ArrayList<Integer> getIntegerArraylistOfField(String table, String field) {
+        String query = "SELECT (" + field + ") FROM " + table;
+        Connection conn = ConnectDB();
+
+        ArrayList<Integer> queryResult = new ArrayList<>();
+
+        try {
+            java.sql.Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(query);
+            while (result.next()) {
+                queryResult.add(result.getInt(field));
+            }
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+        return queryResult;
     }
 
 }

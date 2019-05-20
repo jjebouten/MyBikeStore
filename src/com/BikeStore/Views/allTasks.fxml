@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.layout.Pane?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.BikeStore.Presentation.Task.TaskLogic" maxHeight="-Infinity"
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.BikeStore.Presentation.Task.TaskPresentation" maxHeight="-Infinity"
       maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
     <children>
-        <DialogPane contentText="allTasks.fxml" layoutX="63.0" layoutY="75.0"/>
+
     </children>
 </Pane>

@@ -13,32 +13,33 @@
                         <Menu mnemonicParsing="false" text="Customers">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#viewAllCustomers" text="All Customers"/>
-                                <MenuItem mnemonicParsing="false" onAction="#viewNewCustomer" text="New Customer"/>
+                                <MenuItem mnemonicParsing="false" onAction="#viewNewCustomer" text="Add Customer"/>
                             </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="Tasks">
+                        <Menu mnemonicParsing="false" text="Show Bikes">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#viewAllTasks" text="All Tasks"/>
-                                <MenuItem mnemonicParsing="false" onAction="#viewNewTask" text="New Task"/>
-                            </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Bikes">
-                            <items>
-                                <MenuItem mnemonicParsing="false" onAction="#viewAllCityBikes" text="All City Bikes"/>
+                                <MenuItem mnemonicParsing="false" onAction="#viewAllCityBikes"
+                                          text="Show all City Bikes"/>
                                 <MenuItem mnemonicParsing="false" onAction="#viewAllMountainBikes"
-                                          text="All Mountain Bikes"/>
+                                          text="Show All Mountain Bikes"/>
                                 <MenuItem mnemonicParsing="false" onAction="#viewAllElectricBikes"
-                                          text="All Electric Bikes"/>
-                                <MenuItem mnemonicParsing="false" onAction="#viewNewBike" text="New Bike"/>
+                                          text="Show All Electric Bikes"/>
                             </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="New Bike">
+                        <Menu mnemonicParsing="false" text="Add Bike">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#viewNewCityBikes" text="New City Bike"/>
                                 <MenuItem mnemonicParsing="false" onAction="#viewNewMountainBikes"
                                           text="New Mountain Bike"/>
                                 <MenuItem mnemonicParsing="false" onAction="#viewNewElectricBikes"
                                           text="New Electric Bike"/>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Tasks">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#viewAllTasks" text="Show All Tasks"/>
+                                <MenuItem mnemonicParsing="false" onAction="#viewNewReparation" text="New Reparation"/>
+                                <MenuItem mnemonicParsing="false" onAction="#viewNewDelivery" text="New Delivery"/>
                             </items>
                         </Menu>
                     </menus>
