@@ -14,4 +14,8 @@ public class MountainBike extends BikeDefault {
     public String getSuspension() {
         return suspension;
     }
+
+    public void setSuspension(String suspension) {
+        this.suspension = suspension;
+    }
 }
