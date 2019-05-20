@@ -4,17 +4,19 @@ import com.BikeStore.Data.Modal.ElectricBike;
 import com.BikeStore.Data.Repository.QueryBuilder;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 public class ElectricBikeRepository extends QueryBuilder {
 
-    static String fieldValue = "ElectricBike";
+    static String Table = "Bikes";
+    static String BikeType = "ElectricBike";
 
     public ArrayList getAllElectricBikes() {
 
-        String query = getAllByFieldThroughString("Bikes", "BikeType", fieldValue);
+        String query = getAllByFieldThroughString("Bikes", "BikeType", BikeType);
 
         Connection conn = ConnectDB();
         ArrayList<ElectricBike> queryResult = new ArrayList<>();
@@ -44,4 +46,33 @@ public class ElectricBikeRepository extends QueryBuilder {
         return queryResult;
     }
 
+    public void newElectricBike(ElectricBike electricBike) {
+        try {
+            // create a mysql database connection
+            Connection conn = ConnectDB();
+            // create a sql date object so we can use it in our INSERT statement
+
+            // the mysql insert statement
+            String query = "INSERT INTO " + Table + " (BikeId, BikeType, BikeBrand, RimSize, NumberOfGears, BikePower)"
+                    + "VALUES (?,?,?,?,?,?)";
+
+            // create the mysql insert preparedstatement
+            assert conn != null;
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setInt(1, electricBike.getBikeId());
+            preparedStmt.setString(2, electricBike.getBikeType());
+            preparedStmt.setString(3, electricBike.getBikeBrand());
+            preparedStmt.setDouble(4, electricBike.getRimSize());
+            preparedStmt.setInt(5, electricBike.getNumberOfGears());
+            preparedStmt.setDouble(6, electricBike.getPower());
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            conn.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+    }
 }

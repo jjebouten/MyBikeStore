@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.control.Label?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.BikeStore.Presentation.Bike.NewElectricBikePresentation">
     <children>
-        <Label layoutX="14.0" layoutY="14.0" text="New ElectricBike"/>
+        <TextField fx:id="txtBikeId" layoutX="130.0" layoutY="41.0"/>
+        <TextField fx:id="txtBikeBrand" layoutX="130.0" layoutY="79.0"/>
+        <TextField fx:id="txtRimSize" layoutX="130.0" layoutY="112.0"/>
+        <TextField fx:id="txtNumberOfGears" layoutX="130.0" layoutY="147.0"/>
+        <TextField fx:id="txtPower" layoutX="128.0" layoutY="185.0"/>
+        <Label layoutX="173.0" layoutY="14.0" text="New City Bike"/>
+        <Label layoutX="10.0" layoutY="46.0" text="Bike number"/>
+        <Label layoutX="10.0" layoutY="84.0" text="Bike Brand"/>
+        <Label layoutX="10.0" layoutY="117.0" text="Rim Size"/>
+        <Label layoutX="11.0" layoutY="152.0" text="Number of gears"/>
+        <Label layoutX="10.0" layoutY="186.0" text="Power"/>
+        <Button layoutX="130.0" layoutY="214.0" mnemonicParsing="false" onAction="#registerNewElectricBike"
+                text="Register Electric Bike"/>
     </children>
 </Pane>

@@ -50,8 +50,8 @@ public class CityBikeRepository extends QueryBuilder {
             // create a sql date object so we can use it in our INSERT statement
 
             // the mysql insert statement
-            String query = "INSERT INTO " + Table + " (BikeId, BikeType, BikeBrand, RimSize, NumberOfGears, DateLastTask, BikeBag)"
-                    + "VALUES (?,?,?,?,?,?,?)";
+            String query = "INSERT INTO " + Table + " (BikeId, BikeType, BikeBrand, RimSize, NumberOfGears, BikeBag)"
+                    + "VALUES (?,?,?,?,?,?)";
 
             // create the mysql insert preparedstatement
             assert conn != null;
@@ -61,8 +61,7 @@ public class CityBikeRepository extends QueryBuilder {
             preparedStmt.setString(3, cityBike.getBikeBrand());
             preparedStmt.setDouble(4, cityBike.getRimSize());
             preparedStmt.setInt(5, cityBike.getNumberOfGears());
-            preparedStmt.setString(6, cityBike.getDateLastTask());
-            preparedStmt.setString(7, cityBike.getBikeBags());
+            preparedStmt.setString(6, cityBike.getBikeBags());
 
             // execute the preparedstatement
             preparedStmt.execute();

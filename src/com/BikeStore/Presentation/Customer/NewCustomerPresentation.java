@@ -28,7 +28,7 @@ public class NewCustomerPresentation implements Initializable {
 
     //Method use the handle the different buttons' action.
     @FXML
-    private void registerCustomer(ActionEvent event) {
+    private void registerCustomer() {
 
         String firstName = txtFirstname.getText();
         String lastName = txtLastname.getText();

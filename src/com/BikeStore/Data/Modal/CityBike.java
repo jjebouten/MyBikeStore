@@ -12,6 +12,10 @@ public class CityBike extends BikeDefault {
     public String getBikeBags() {
         return bikeBags;
     }
+
+    public void setBikeBags(String bikeBags) {
+        this.bikeBags = bikeBags;
+    }
 }
 
 

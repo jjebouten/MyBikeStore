@@ -9,7 +9,7 @@ public class NewBikeDefaultLogic {
 
     BikeDefaultRepository bikeDefaultRepository = new BikeDefaultRepository();
 
-    public boolean validateBikeDefaultFields(String bikeId, String bikeBrand, String rimSize, String numberOfGears, String dateLastTask) {
+    public boolean validateBikeDefaultFields(String bikeId, String bikeBrand, String rimSize, String numberOfGears) {
 
         if (!StringIsInteger(bikeId)) {
             alertError("Error 1558095938", "Bike Id should only be a number");
@@ -23,11 +23,6 @@ public class NewBikeDefaultLogic {
 
         if (bikeDefaultRepository.CheckIfIdExistsInDatabase(Integer.parseInt(bikeId))) {
             alertError("Error 1558094847", "Bike Id already exists in database");
-            return false;
-        }
-
-        if (!isThisDateValid(dateLastTask)) {
-            alertError("Error 1558099386", "Invalid date");
             return false;
         }
 

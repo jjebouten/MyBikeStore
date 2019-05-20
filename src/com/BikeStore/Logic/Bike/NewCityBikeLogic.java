@@ -9,11 +9,20 @@ public class NewCityBikeLogic {
     CityBikeRepository cityBikeRepository = new CityBikeRepository();
     NewBikeDefaultLogic newBikeDefaultLogic = new NewBikeDefaultLogic();
     private static String bikeType = "CityBike";
+    private CityBike cityBike = new CityBike(0, "", "", 0.0, 0, "", "");
 
-    public boolean createNewCityBike(String bikeId, String bikeBrand, String rimSize, String numberOfGears, String dateLastTask, String bikeBags) {
+    public boolean createNewCityBike(String bikeId, String bikeBrand, String rimSize, String numberOfGears, String bikeBags) {
 
-        if (newBikeDefaultLogic.validateBikeDefaultFields(bikeId, bikeBrand, rimSize, numberOfGears, dateLastTask)) {
-            CityBike cityBike = new CityBike(Integer.parseInt(bikeId), bikeBrand, bikeType, Double.parseDouble(rimSize), Integer.parseInt(numberOfGears), dateLastTask, bikeBags);
+        if (newBikeDefaultLogic.validateBikeDefaultFields(bikeId, bikeBrand, rimSize, numberOfGears)) {
+
+            cityBike.setBikeId(Integer.parseInt(bikeId));
+            cityBike.setBikeBrand(bikeBrand);
+            cityBike.setBikeType(bikeType);
+            cityBike.setRimSize(Double.parseDouble(rimSize));
+            cityBike.setNumberOfGears(Integer.parseInt(numberOfGears));
+            cityBike.setBikeBags(bikeBags);
+
+
             cityBikeRepository.newCityBike(cityBike);
             return true;
         }

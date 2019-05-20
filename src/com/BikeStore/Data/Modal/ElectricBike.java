@@ -1,7 +1,5 @@
 package com.BikeStore.Data.Modal;
 
-import java.sql.Date;
-
 public class ElectricBike extends BikeDefault {
     private double power;
 
@@ -12,5 +10,8 @@ public class ElectricBike extends BikeDefault {
 
     public double getPower() {
         return power;
+    }
+
+    public void setPower(double power) {
     }
 }

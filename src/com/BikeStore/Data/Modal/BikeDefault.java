@@ -46,4 +46,28 @@ public abstract class BikeDefault implements BikeInterface {
     public String getDateLastTask() {
         return dateLastTask;
     }
+
+    public void setBikeId(int bikeId) {
+        this.bikeId = bikeId;
+    }
+
+    public void setBikeBrand(String bikeBrand) {
+        this.bikeBrand = bikeBrand;
+    }
+
+    public void setBikeType(String bikeType) {
+        this.bikeType = bikeType;
+    }
+
+    public void setRimSize(double rimSize) {
+        this.rimSize = rimSize;
+    }
+
+    public void setNumberOfGears(int numberOfGears) {
+        this.numberOfGears = numberOfGears;
+    }
+
+    public void setDateLastTask(String dateLastTask) {
+        this.dateLastTask = dateLastTask;
+    }
 }
