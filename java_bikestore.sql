@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2019 at 02:07 PM
--- Server version: 5.7.25-0ubuntu0.18.04.2
--- PHP Version: 7.2.15-0ubuntu0.18.04.2
+-- Generation Time: May 24, 2019 at 04:57 PM
+-- Server version: 5.7.26-0ubuntu0.18.04.1
+-- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Bikes` (
   `BikeId` int(11) DEFAULT NULL,
-  `BikeBrand` varchar(255) DEFAULT NULL,
-  `BikeType` int(11) DEFAULT NULL,
-  `RimSize` double DEFAULT NULL,
-  `NumberOfGears` varchar(255) DEFAULT NULL,
+  `BikeBrand` varchar(255) DEFAULT '',
+  `BikeType` varchar(255) DEFAULT '',
+  `RimSize` double DEFAULT '0',
+  `NumberOfGears` varchar(255) DEFAULT '0',
   `DateLastTask` date DEFAULT NULL,
-  `BikeBag` int(10) NOT NULL,
-  `BikePower` double(5,5) DEFAULT NULL,
-  `BikeSuspension` varchar(255) NOT NULL
+  `BikeBag` varchar(10) NOT NULL DEFAULT 'false',
+  `BikePower` float DEFAULT '0',
+  `BikeSuspension` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -43,65 +43,36 @@ CREATE TABLE `Bikes` (
 --
 
 INSERT INTO `Bikes` (`BikeId`, `BikeBrand`, `BikeType`, `RimSize`, `NumberOfGears`, `DateLastTask`, `BikeBag`, `BikePower`, `BikeSuspension`) VALUES
-(1, 'Gazelle', 1, 21, '7', '2019-04-26', 0, NULL, ''),
-(2, 'Batavus', 2, 21, '3', '2019-04-29', 0, NULL, ''),
-(3, 'Spatavius', 3, 21, '7', '2010-12-01', 0, NULL, ''),
-(4, 'Sparta', 2, 20, '3', '2019-04-16', 0, NULL, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Bike_Type_City`
---
-
-CREATE TABLE `Bike_Type_City` (
-  `BikeId` int(11) DEFAULT NULL,
-  `BikeBag` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Bike_Type_City`
---
-
-INSERT INTO `Bike_Type_City` (`BikeId`, `BikeBag`) VALUES
-(1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Bike_Type_Electric`
---
-
-CREATE TABLE `Bike_Type_Electric` (
-  `BikeId` int(11) DEFAULT NULL,
-  `BikePower` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Bike_Type_Electric`
---
-
-INSERT INTO `Bike_Type_Electric` (`BikeId`, `BikePower`) VALUES
-(2, 23),
-(4, 22.5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Bike_Type_Mountain`
---
-
-CREATE TABLE `Bike_Type_Mountain` (
-  `BikeId` int(11) DEFAULT NULL,
-  `Suspension` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Bike_Type_Mountain`
---
-
-INSERT INTO `Bike_Type_Mountain` (`BikeId`, `Suspension`) VALUES
-(3, 'Front suspension');
+(1, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
+(2, 'Gazelle', 'CityBike', 26, '3', '2019-05-24', 'false', NULL, ''),
+(3, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
+(4, 'Gazelle', 'CityBike', 26, '3', NULL, 'false', NULL, ''),
+(5, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
+(6, 'Gazelle', 'CityBike', 26, '3', NULL, 'false', NULL, ''),
+(7, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
+(8, 'Gazelle', 'CityBike', 26, '3', NULL, 'false', NULL, ''),
+(9, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
+(10, 'Gazelle', 'CityBike', 26, '3', NULL, 'false', NULL, ''),
+(11, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 48, ''),
+(12, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 32, ''),
+(13, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 48, ''),
+(14, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 32, ''),
+(15, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 48, ''),
+(16, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 32, ''),
+(17, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 48, ''),
+(18, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 32, ''),
+(19, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 48, ''),
+(20, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 32, ''),
+(21, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Hardtail'),
+(22, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Full-suspension'),
+(23, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Hardtail'),
+(24, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Full-suspension'),
+(25, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Hardtail'),
+(26, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Full-suspension'),
+(27, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Hardtail'),
+(28, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Full-suspension'),
+(29, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Hardtail'),
+(30, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Full-suspension');
 
 -- --------------------------------------------------------
 
@@ -202,24 +173,6 @@ ALTER TABLE `Bikes`
   ADD KEY `BikeId` (`BikeId`,`BikeBrand`,`BikeType`,`RimSize`,`NumberOfGears`,`DateLastTask`);
 
 --
--- Indexes for table `Bike_Type_City`
---
-ALTER TABLE `Bike_Type_City`
-  ADD KEY `BikeId` (`BikeId`);
-
---
--- Indexes for table `Bike_Type_Electric`
---
-ALTER TABLE `Bike_Type_Electric`
-  ADD KEY `BikeId` (`BikeId`);
-
---
--- Indexes for table `Bike_Type_Mountain`
---
-ALTER TABLE `Bike_Type_Mountain`
-  ADD KEY `BikeId` (`BikeId`,`Suspension`);
-
---
 -- Indexes for table `Customers`
 --
 ALTER TABLE `Customers`
@@ -245,7 +198,6 @@ ALTER TABLE `Tasks`
 -- Constraints for table `Tasks`
 --
 ALTER TABLE `Tasks`
-  ADD CONSTRAINT `Tasks_ibfk_1` FOREIGN KEY (`BikeId`) REFERENCES `Bikes` (`BikeId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `Tasks_ibfk_2` FOREIGN KEY (`CustomerId`) REFERENCES `Customers` (`CustomerId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,14 +6,14 @@ import javafx.collections.ObservableList;
 public class NewTaskLogic extends TaskLogic {
 
     protected boolean createNewReparationTask(Integer customerId, Integer bikeId, String description) {
-        if (customerId != null || bikeId != null) {
+        if (customerId != null && bikeId != null) {
             return newTaskDefault(customerId, bikeId, description, indicationReparation);
         }
         return false;
     }
 
     protected boolean createNewDeliveryTask(Integer customerId, Integer bikeId) {
-        if (customerId != null || bikeId != null) {
+        if (customerId != null && bikeId != null) {
             return newTaskDefault(customerId, bikeId, descriptionDelivery, indicationDelivery);
         }
         return false;
