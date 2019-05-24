@@ -1,6 +1,6 @@
 package com.BikeStore.Presentation.Task;
 
-import com.BikeStore.Logic.Task.NewTaskReparationLogic;
+import com.BikeStore.Logic.Task.NewTaskLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
 
-public class newTaskReparationPresentation extends NewTaskReparationLogic implements Initializable {
+public class newTaskReparationPresentation extends NewTaskLogic implements Initializable {
 
     @FXML
     public ComboBox cmbCustomer;

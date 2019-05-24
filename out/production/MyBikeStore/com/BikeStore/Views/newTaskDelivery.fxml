@@ -3,34 +3,27 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
-<?import java.lang.String?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.BikeStore.Presentation.Task.newTaskDeliveryPresentation">
     <children>
+        <Label layoutX="14.0" layoutY="46.0" text="Customer"/>
         <Label layoutX="231.0" layoutY="14.0" text="New Delivery Task"/>
-        <ComboBox fx:id="selectBikeSuspension" layoutX="131.0" layoutY="41.0" prefHeight="25.0" prefWidth="169.0"
+        <ComboBox fx:id="cmbCustomer" layoutX="131.0" layoutY="41.0" prefHeight="25.0" prefWidth="169.0"
                   promptText="Choose Customer">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Hardtail"/>
-                    <String fx:value="Full-suspension"/>
                 </FXCollections>
             </items>
         </ComboBox>
-        <Label layoutX="14.0" layoutY="46.0" text="Customer"/>
         <Label layoutX="14.0" layoutY="84.0" prefHeight="15.0" prefWidth="63.0" text="Bike"/>
-        <Label layoutX="13.0" layoutY="137.0" text="Description"/>
-        <ComboBox fx:id="selectBikeSuspension1" layoutX="131.0" layoutY="79.0" prefHeight="25.0" prefWidth="169.0"
+        <ComboBox fx:id="cmbBike" layoutX="131.0" layoutY="79.0" prefHeight="25.0" prefWidth="169.0"
                   promptText="Choose Bike">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Hardtail" value="test"/>
-                    <String fx:value="Full-suspension"/>
                 </FXCollections>
             </items>
         </ComboBox>
-        <TextArea layoutX="131.0" layoutY="117.0" prefHeight="55.0" prefWidth="398.0"/>
-        <Button layoutX="131.0" layoutY="188.0" mnemonicParsing="false" text="Create new reparation task"/>
+        <Button onAction="#btnCreateNewDeliveryTask" layoutX="131.0" layoutY="188.0" mnemonicParsing="false" text="Create new delivery task"/>
     </children>
 </Pane>

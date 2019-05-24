@@ -1,18 +1,52 @@
 package com.BikeStore.Data.Repository.Task;
 
+import com.BikeStore.Data.Modal.Customer;
 import com.BikeStore.Data.Modal.Task;
+import com.BikeStore.Data.Repository.Customer.CustomerRepository;
 import com.BikeStore.Data.Repository.QueryBuilder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class TaskRepository extends QueryBuilder {
 
-    static String Table = "Tasks";
+    private static String Table = "Tasks";
+    CustomerRepository customerRepository = new CustomerRepository();
 
     public ArrayList getAllTasks() {
-        return null;
+        String query = getAll(Table);
+
+        Connection conn = ConnectDB();
+        ArrayList<Task> queryResult = new ArrayList<>();
+        try {
+            // create the java statement
+            Statement st = conn.createStatement();
+
+            // execute the query, and get a java resultset
+            ResultSet result = st.executeQuery(query);
+
+            // iterate through the java resultset
+            while (result.next()) {
+                Customer customer = customerRepository.getCustomerById(result.getInt("CustomerId"));
+
+                Task task = new Task(result.getInt("TaskId"),
+                        customer,
+                        result.getInt("BikeId"),
+                        result.getString("Indication"),
+                        result.getString("TaskDate"),
+                        result.getString("TaskReadyDate"),
+                        result.getString("Description"));
+                queryResult.add(task);
+            }
+            st.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+        return queryResult;
     }
 
     public ArrayList<Integer> getAllCustomerIds() {
@@ -23,7 +57,7 @@ public class TaskRepository extends QueryBuilder {
         return getIntegerArraylistOfField("Bikes", "BikeId");
     }
 
-    public void newReparationTask(Task task) {
+    public void newTask(Task task) {
         try {
             // create a mysql database connection
             Connection conn = ConnectDB();
@@ -53,7 +87,7 @@ public class TaskRepository extends QueryBuilder {
         }
     }
 
-    public int getMaxTaskId(){
+    public int getMaxTaskId() {
         return getMax(Table, "TaskId");
     }
 

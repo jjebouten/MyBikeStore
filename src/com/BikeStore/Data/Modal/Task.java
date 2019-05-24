@@ -6,16 +6,16 @@ public class Task {
     private Integer bikeId;
     private String indication;
     private String  taskDate;
-    private String taskDateReady;
+    private String taskReadyDate;
     private String description;
 
-    public Task(Integer taskId, Customer customer, Integer bike, String indication, String taskDate, String taskDateReady, String description) {
+    public Task(Integer taskId, Customer customer, Integer bikeId, String indication, String taskDate, String taskReadyDate, String description) {
         this.taskId = taskId;
         this.customer = customer;
-        this.bikeId = bike;
+        this.bikeId = bikeId;
         this.indication = indication;
         this.taskDate = taskDate;
-        this.taskDateReady = taskDateReady;
+        this.taskReadyDate = taskReadyDate;
         this.description = description;
     }
 
@@ -59,12 +59,12 @@ public class Task {
         this.taskDate = taskDate;
     }
 
-    public String getTaskDateReady() {
-        return taskDateReady;
+    public String getTaskReadyDate() {
+        return taskReadyDate;
     }
 
-    public void setTaskDateReady(String taskDateReady) {
-        this.taskDateReady = taskDateReady;
+    public void setTaskReadyDate(String taskReadyDate) {
+        this.taskReadyDate = taskReadyDate;
     }
 
     public String getDescription() {

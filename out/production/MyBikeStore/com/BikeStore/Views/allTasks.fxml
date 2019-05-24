@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.BikeStore.Presentation.Task.TaskPresentation" maxHeight="-Infinity"
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.BikeStore.Presentation.Task.TaskPresentation"
+      maxHeight="-Infinity"
       maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
       prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
     <children>
 
+        <TableView fx:id="tableView" layoutX="10.0" layoutY="10.0" prefHeight="650.0" prefWidth="1000.0">
+            <columns>
+                <TableColumn prefWidth="50.0" text="taskId" fx:id="taskId"/>
+                <TableColumn prefWidth="125.0" text="customerId" fx:id="customerId"/>
+                <TableColumn prefWidth="150.0" text="bikeId" fx:id="bikeId"/>
+                <TableColumn prefWidth="50.0" text="indication" fx:id="indication"/>
+                <TableColumn prefWidth="200.0" text="taskDate" fx:id="taskDate"/>
+                <TableColumn prefWidth="150.0" text="taskReadyDate" fx:id="taskReadyDate"/>
+                <TableColumn prefWidth="300.0" text="Description" fx:id="description"/>
+            </columns>
+        </TableView>
+
     </children>
 </Pane>
+
+

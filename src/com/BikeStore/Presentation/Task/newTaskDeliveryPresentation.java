@@ -1,4 +1,37 @@
 package com.BikeStore.Presentation.Task;
 
-public class newTaskDeliveryPresentation {
+import com.BikeStore.Logic.Task.NewTaskLogic;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
+
+public class newTaskDeliveryPresentation extends NewTaskLogic implements Initializable {
+
+    @FXML
+    public ComboBox cmbCustomer;
+    @FXML
+    public ComboBox cmbBike;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cmbCustomer.getItems().clear();
+        cmbCustomer.getItems().addAll(getAllCustomerIdsInObservableList());
+        cmbBike.getItems().clear();
+        cmbBike.getItems().addAll(getAllBikeIdsInObservableList());
+    }
+
+    public void btnCreateNewDeliveryTask() {
+        Integer customerId = (Integer) cmbCustomer.getValue();
+        Integer bikeId = (Integer) cmbBike.getValue();
+        if (createNewDeliveryTask(customerId, bikeId)) {
+            alertSucces("Succes", "Delivery task succesfully created");
+            cmbCustomer.setValue(0);
+            cmbBike.setValue(0);
+        }
+    }
+
 }
