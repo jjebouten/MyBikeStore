@@ -5,8 +5,7 @@ import com.BikeStore.Logic.Task.ShowTaskLogic;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -32,6 +31,8 @@ public class TaskPresentation implements Initializable {
     private TableColumn<Task, String> taskReadyDate;
     @FXML
     private TableColumn<Task, String> description;
+    @FXML
+    private TableColumn<Task, Button> button;
 
     private void initializeTaskFields() {
         taskId.setCellValueFactory(new PropertyValueFactory<>("taskId"));
@@ -42,6 +43,16 @@ public class TaskPresentation implements Initializable {
         taskDate.setCellValueFactory(new PropertyValueFactory<>("taskDate"));
         taskReadyDate.setCellValueFactory(new PropertyValueFactory<>("taskReadyDate"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        button.setCellFactory(ActionButtonTableCell.<Task>forTableColumn("Set Ready", (Task currentTask) -> {
+            showTaskLogic.setTaskReadyDate(currentTask.getBikeId(), currentTask.getTaskId());
+            reload();
+            return null;
+        }));
+    }
+
+    private void reload() {
+        tableView.getItems().clear();
+        tableView.getItems().setAll(showTaskLogic.parseTaskList());
     }
 
     @Override

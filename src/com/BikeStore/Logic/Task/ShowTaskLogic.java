@@ -1,16 +1,24 @@
 package com.BikeStore.Logic.Task;
 
-import com.BikeStore.Data.Repository.Customer.CustomerRepository;
-import com.BikeStore.Data.Repository.Task.TaskRepository;
-
 import java.util.List;
 
-public class ShowTaskLogic {
+public class ShowTaskLogic extends TaskLogic {
 
-    TaskRepository taskRepo = new TaskRepository();
 
     public List parseTaskList() {
-        return taskRepo.getAllTasks();
+        return taskRepository.getAllTasks();
     }
 
+    public void setTaskReadyDate(Integer bikeId, Integer taskId) {
+        setTaskReadyDate(bikeId, getCurrentDate());
+        setBikeDateLastTask(taskId, getCurrentDate());
+    }
+
+    public void setTaskReadyDate(Integer bikeId, String currentDate) {
+        bikeRepository.setDateLastTask(bikeId, currentDate);
+    }
+
+    public void setBikeDateLastTask(Integer taskId, String currentDate) {
+        taskRepository.setTaskReadyDate(taskId, currentDate);
+    }
 }

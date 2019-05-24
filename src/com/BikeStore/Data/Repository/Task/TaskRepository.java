@@ -87,6 +87,31 @@ public class TaskRepository extends QueryBuilder {
         }
     }
 
+    public void setTaskReadyDate(Integer taskId, String currentDate) {
+        try {
+            // create a mysql database connection
+            Connection conn = ConnectDB();
+            // create a sql date object so we can use it in our INSERT statement
+
+            // the mysql insert statement
+            String query = "UPDATE " + Table + " SET TaskReadyDate = ? WHERE TaskId = ?";
+
+            // create the mysql insert preparedstatement
+            assert conn != null;
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setString   (1, currentDate);
+            preparedStmt.setInt(2, taskId);
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            conn.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+    }
+
     public int getMaxTaskId() {
         return getMax(Table, "TaskId");
     }

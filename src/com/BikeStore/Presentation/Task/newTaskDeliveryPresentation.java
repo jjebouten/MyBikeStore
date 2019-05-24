@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertWarning;
 
 public class newTaskDeliveryPresentation extends NewTaskLogic implements Initializable {
 
@@ -31,6 +32,9 @@ public class newTaskDeliveryPresentation extends NewTaskLogic implements Initial
             alertSucces("Succes", "Delivery task succesfully created");
             cmbCustomer.setValue(0);
             cmbBike.setValue(0);
+        }
+        else {
+            alertWarning("Error 1558707337", "Invalid customerId or BikeId");
         }
     }
 

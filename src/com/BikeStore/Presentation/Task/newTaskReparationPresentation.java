@@ -9,7 +9,7 @@ import javafx.scene.control.TextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.*;
 
 public class newTaskReparationPresentation extends NewTaskLogic implements Initializable {
 
@@ -37,6 +37,9 @@ public class newTaskReparationPresentation extends NewTaskLogic implements Initi
             cmbCustomer.setValue(0);
             cmbBike.setValue(0);
             txtDescription.setText("");
+        }
+        else {
+            alertWarning("Error 1558707296", "Invalid customerId or BikeId");
         }
     }
 

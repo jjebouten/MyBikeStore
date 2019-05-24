@@ -6,10 +6,10 @@ import java.util.List;
 
 public class ShowCustomerLogic {
 
-    CustomerRepository customerRepo = new CustomerRepository();
+    CustomerRepository customerRepository = new CustomerRepository();
 
     public List parseCustomerList() {
-        return customerRepo.getAllCustomers();
+        return customerRepository.getAllCustomers();
     }
 
 }
