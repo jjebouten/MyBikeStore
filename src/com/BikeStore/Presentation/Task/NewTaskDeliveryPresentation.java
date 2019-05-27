@@ -4,21 +4,18 @@ import com.BikeStore.Logic.Task.NewTaskLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.*;
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertWarning;
 
-public class newTaskReparationPresentation extends NewTaskLogic implements Initializable {
+public class NewTaskDeliveryPresentation extends NewTaskLogic implements Initializable {
 
     @FXML
-    public ComboBox cmbCustomer;
+    private ComboBox cmbCustomer;
     @FXML
-    public ComboBox cmbBike;
-    @FXML
-    public TextArea txtDescription;
+    private ComboBox cmbBike;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -28,18 +25,16 @@ public class newTaskReparationPresentation extends NewTaskLogic implements Initi
         cmbBike.getItems().addAll(getAllBikeIdsInObservableList());
     }
 
-    public void btnCreateNewReparationTask() {
+    public void btnCreateNewDeliveryTask() {
         Integer customerId = (Integer) cmbCustomer.getValue();
         Integer bikeId = (Integer) cmbBike.getValue();
-        String description = txtDescription.getText();
-        if (createNewReparationTask(customerId, bikeId, description)) {
-            alertSucces("Succes", "Reparation task succesfully created");
+        if (createNewDeliveryTask(customerId, bikeId)) {
+            alertSucces("Succes", "Delivery task succesfully created");
             cmbCustomer.setValue(0);
             cmbBike.setValue(0);
-            txtDescription.setText("");
         }
         else {
-            alertWarning("Error 1558707296", "Invalid customerId or BikeId");
+            alertWarning("Error 1558707337", "Invalid customerId or BikeId");
         }
     }
 
