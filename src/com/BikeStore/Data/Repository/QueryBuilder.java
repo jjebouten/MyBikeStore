@@ -40,7 +40,7 @@ public class QueryBuilder extends Database implements QueryBuilderInterface {
         return max;
     }
 
-    public ArrayList<Integer> getIntegerArraylistOfField(String table, String field) {
+    public ArrayList<Integer> getIntegerArrayListOfField(String table, String field) {
         String query = "SELECT (" + field + ") FROM " + table;
         Connection conn = ConnectDB();
 

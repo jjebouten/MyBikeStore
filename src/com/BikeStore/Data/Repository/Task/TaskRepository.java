@@ -50,11 +50,11 @@ public class TaskRepository extends QueryBuilder {
     }
 
     public ArrayList<Integer> getAllCustomerIds() {
-        return getIntegerArraylistOfField("Customers", "CustomerId");
+        return getIntegerArrayListOfField("Customers", "CustomerId");
     }
 
     public ArrayList<Integer> getAllBikeIds() {
-        return getIntegerArraylistOfField("Bikes", "BikeId");
+        return getIntegerArrayListOfField("Bikes", "BikeId");
     }
 
     public void newTask(Task task) {

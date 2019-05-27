@@ -59,14 +59,6 @@ public class Task {
         this.taskDate = taskDate;
     }
 
-    public String getTaskReadyDate() {
-        return taskReadyDate;
-    }
-
-    public void setTaskReadyDate(String taskReadyDate) {
-        this.taskReadyDate = taskReadyDate;
-    }
-
     public String getDescription() {
         return description;
     }

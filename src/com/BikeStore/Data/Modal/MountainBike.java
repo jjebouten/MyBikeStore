@@ -1,7 +1,5 @@
 package com.BikeStore.Data.Modal;
 
-import java.sql.Date;
-
 public class MountainBike extends BikeDefault {
 
     private String suspension;

@@ -67,7 +67,4 @@ public abstract class BikeDefault implements BikeInterface {
         this.numberOfGears = numberOfGears;
     }
 
-    public void setDateLastTask(String dateLastTask) {
-        this.dateLastTask = dateLastTask;
-    }
 }
