@@ -42,7 +42,6 @@ public abstract class BikeDefault implements BikeInterface {
         return numberOfGears;
     }
 
-    @Override
     public String getDateLastTask() {
         return dateLastTask;
     }

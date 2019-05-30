@@ -12,4 +12,7 @@ public class ElectricBike extends BikeDefault {
         return power;
     }
 
+    public void setPower(double power) {
+        this.power = power;
+    }
 }
