@@ -10,6 +10,11 @@
             <children>
                 <MenuBar>
                     <menus>
+                        <Menu mnemonicParsing="false" text="Home">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#viewHome" text="Home"/>
+                            </items>
+                        </Menu>
                         <Menu mnemonicParsing="false" text="Customers">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#viewAllCustomers" text="All Customers"/>

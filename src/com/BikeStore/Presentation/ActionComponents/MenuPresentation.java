@@ -107,4 +107,10 @@ public class MenuPresentation {
         Pane newContent = fxmlLoader.load();
         setNewContent(newContent);
     }
+
+    public void viewHome() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/homeContent.fxml"));
+        Pane newContent = fxmlLoader.load();
+        setNewContent(newContent);
+    }
 }
