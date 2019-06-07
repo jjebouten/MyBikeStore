@@ -42,10 +42,6 @@ public abstract class BikeDefault implements BikeInterface {
         return numberOfGears;
     }
 
-    public String getDateLastTask() {
-        return dateLastTask;
-    }
-
     public void setBikeId(int bikeId) {
         this.bikeId = bikeId;
     }
@@ -66,4 +62,11 @@ public abstract class BikeDefault implements BikeInterface {
         this.numberOfGears = numberOfGears;
     }
 
+    public String getDateLastTask() {
+        return dateLastTask;
+    }
+
+    public void setDateLastTask(String dateLastTask) {
+        this.dateLastTask = dateLastTask;
+    }
 }

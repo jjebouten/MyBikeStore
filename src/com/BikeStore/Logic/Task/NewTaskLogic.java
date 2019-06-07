@@ -24,7 +24,7 @@ public class NewTaskLogic extends TaskLogic {
             indicationReparation) {
         task.setTaskId(createNewTaskId());
         task.setCustomer(customerRepository.getCustomerById(customerId));
-        task.setBikeId(bikeId);
+        task.setBike(bikeRepository.getBikeById(bikeId));
         task.setDescription(description);
         task.setIndication(indicationReparation);
         task.setTaskDate(getCurrentDate());

@@ -3,16 +3,16 @@ package com.BikeStore.Data.Modal;
 public class Task {
     private Integer taskId;
     private Customer customer;
-    private Integer bikeId;
+    private BikeDefault bike;
     private String indication;
     private String  taskDate;
     private String taskReadyDate;
     private String description;
 
-    public Task(Integer taskId, Customer customer, Integer bikeId, String indication, String taskDate, String taskReadyDate, String description) {
+    public Task(Integer taskId, Customer customer, BikeDefault bike, String indication, String taskDate, String taskReadyDate, String description) {
         this.taskId = taskId;
         this.customer = customer;
-        this.bikeId = bikeId;
+        this.bike = bike;
         this.indication = indication;
         this.taskDate = taskDate;
         this.taskReadyDate = taskReadyDate;
@@ -35,12 +35,12 @@ public class Task {
         this.customer = customer;
     }
 
-    public Integer getBikeId() {
-        return bikeId;
+    public BikeDefault getBike() {
+        return bike;
     }
 
-    public void setBikeId(Integer bikeId) {
-        this.bikeId = bikeId;
+    public void setBike(BikeDefault bike) {
+        this.bike = bike;
     }
 
     public String getIndication() {

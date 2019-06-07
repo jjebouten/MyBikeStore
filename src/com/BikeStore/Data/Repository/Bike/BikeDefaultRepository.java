@@ -1,5 +1,6 @@
 package com.BikeStore.Data.Repository.Bike;
 
+import com.BikeStore.Data.Modal.BikeDefault;
 import com.BikeStore.Data.Repository.QueryBuilder;
 
 import java.sql.Connection;
@@ -61,5 +62,34 @@ public class BikeDefaultRepository extends QueryBuilder {
             System.err.println("Got an exception!");
             System.err.println(e.getMessage());
         }
+    }
+
+    public BikeDefault getBikeById(int bikeId) {
+
+            String query = getAllByFieldThroughInt(Table, "bikeId", bikeId);
+            BikeDefault bike = new BikeDefault(bikeId, "", "", 0.0, 0, "") {
+            };
+            Connection conn = ConnectDB();
+            try {
+                // create the java statement
+                Statement st = conn.createStatement();
+
+                // execute the query, and get a java resultset
+                ResultSet result = st.executeQuery(query);
+
+                // iterate through the java resultset
+                while (result.next()) {
+                    bike.setBikeBrand(result.getString("BikeBrand"));
+                    bike.setBikeType(result.getString("BikeType"));
+                    bike.setRimSize(result.getDouble("RimSize"));
+                    bike.setNumberOfGears(result.getInt("NumberOfGears"));
+                    bike.setDateLastTask(result.getString("DateLastTask"));
+                }
+                st.close();
+            } catch (Exception e) {
+                System.err.println("Got an exception!");
+                System.err.println(e.getMessage());
+            }
+            return bike;
     }
 }

@@ -22,7 +22,7 @@ public class TaskPresentation implements Initializable {
     @FXML
     private TableColumn<Task, String> customerId;
     @FXML
-    private TableColumn<Task, Integer> bikeId;
+    private TableColumn<Task, String> bikeId;
     @FXML
     private TableColumn<Task, Integer> indication;
     @FXML
@@ -38,13 +38,14 @@ public class TaskPresentation implements Initializable {
         taskId.setCellValueFactory(new PropertyValueFactory<>("taskId"));
         customerId.setCellValueFactory(cellData ->
                 new SimpleStringProperty((String.valueOf(cellData.getValue().getCustomer().getCustomerId()))));
-        bikeId.setCellValueFactory(new PropertyValueFactory<>("bikeId"));
+        bikeId.setCellValueFactory(cellData ->
+                new SimpleStringProperty((String.valueOf(cellData.getValue().getBike().getBikeId()))));
         indication.setCellValueFactory(new PropertyValueFactory<>("indication"));
         taskDate.setCellValueFactory(new PropertyValueFactory<>("taskDate"));
         taskReadyDate.setCellValueFactory(new PropertyValueFactory<>("taskReadyDate"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         button.setCellFactory(ActionButtonTableCell.<Task>forTableColumn("Set Ready", (Task currentTask) -> {
-            showTaskLogic.setTaskReadyDate(currentTask.getBikeId(), currentTask.getTaskId());
+            showTaskLogic.setTaskReadyDate(currentTask.getBike().getBikeId(), currentTask.getTaskId());
             reload();
             return null;
         }));

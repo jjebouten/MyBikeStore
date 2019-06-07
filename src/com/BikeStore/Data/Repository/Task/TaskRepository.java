@@ -1,7 +1,9 @@
 package com.BikeStore.Data.Repository.Task;
 
+import com.BikeStore.Data.Modal.BikeDefault;
 import com.BikeStore.Data.Modal.Customer;
 import com.BikeStore.Data.Modal.Task;
+import com.BikeStore.Data.Repository.Bike.BikeDefaultRepository;
 import com.BikeStore.Data.Repository.Customer.CustomerRepository;
 import com.BikeStore.Data.Repository.QueryBuilder;
 
@@ -15,6 +17,7 @@ public class TaskRepository extends QueryBuilder {
 
     private static String Table = "Tasks";
     CustomerRepository customerRepository = new CustomerRepository();
+    BikeDefaultRepository bikeDefaultRepository= new BikeDefaultRepository();
 
     public ArrayList getAllTasks() {
         String query = getAll(Table);
@@ -31,10 +34,11 @@ public class TaskRepository extends QueryBuilder {
             // iterate through the java resultset
             while (result.next()) {
                 Customer customer = customerRepository.getCustomerById(result.getInt("CustomerId"));
+                BikeDefault bike = bikeDefaultRepository.getBikeById(result.getInt("BikeId"));
 
                 Task task = new Task(result.getInt("TaskId"),
                         customer,
-                        result.getInt("BikeId"),
+                        bike,
                         result.getString("Indication"),
                         result.getString("TaskDate"),
                         result.getString("TaskReadyDate"),
@@ -72,7 +76,7 @@ public class TaskRepository extends QueryBuilder {
             PreparedStatement preparedStmt = conn.prepareStatement(query);
             preparedStmt.setInt(1, task.getTaskId());
             preparedStmt.setInt(2, task.getCustomer().getCustomerId());
-            preparedStmt.setInt(3, task.getBikeId());
+            preparedStmt.setInt(3, task.getBike().getBikeId());
             preparedStmt.setString(4, task.getIndication());
             preparedStmt.setString(5, task.getTaskDate());
             preparedStmt.setString(6, task.getDescription());
