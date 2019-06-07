@@ -4,16 +4,16 @@ import com.BikeStore.Data.Modal.CityBike;
 import com.BikeStore.Data.Repository.Bike.CityBikeRepository;
 
 
-public class NewCityBikeLogic {
+public class NewCityBikeLogic extends NewBikeDefaultLogic {
 
     CityBikeRepository cityBikeRepository = new CityBikeRepository();
-    NewBikeDefaultLogic newBikeDefaultLogic = new NewBikeDefaultLogic();
+//    NewBikeDefaultLogic newBikeDefaultLogic = new NewBikeDefaultLogic();
     private static String bikeType = "CityBike";
     private CityBike cityBike = new CityBike(0, "", "", 0.0, 0, "", "");
 
     public boolean createNewCityBike(String bikeId, String bikeBrand, String rimSize, String numberOfGears, String bikeBags) {
 
-        if (newBikeDefaultLogic.validateBikeDefaultFields(bikeId, bikeBrand, rimSize, numberOfGears)) {
+        if (validateBikeDefaultFields(bikeId, bikeBrand, rimSize, numberOfGears)) {
 
             cityBike.setBikeId(Integer.parseInt(bikeId));
             cityBike.setBikeBrand(bikeBrand);

@@ -6,10 +6,10 @@ import com.BikeStore.Data.Repository.Bike.MountainBikeRepository;
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
 
 
-public class NewMountainBikeLogic {
+public class NewMountainBikeLogic extends NewBikeDefaultLogic {
 
     MountainBikeRepository mountainBikeRepository = new MountainBikeRepository();
-    NewBikeDefaultLogic newBikeDefaultLogic = new NewBikeDefaultLogic();
+
     private static String bikeType = "MountainBike";
     private MountainBike mountainBike = new MountainBike(0, "", "", 0.0, 0, "", "");
 
@@ -19,7 +19,7 @@ public class NewMountainBikeLogic {
             return false;
         }
 
-        if (newBikeDefaultLogic.validateBikeDefaultFields(bikeId, bikeBrand, rimSize, numberOfGears)) {
+        if (validateBikeDefaultFields(bikeId, bikeBrand, rimSize, numberOfGears)) {
             mountainBike.setBikeId(Integer.parseInt(bikeId));
             mountainBike.setBikeBrand(bikeBrand);
             mountainBike.setBikeType(bikeType);

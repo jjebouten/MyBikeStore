@@ -1,5 +1,6 @@
 package com.BikeStore.Presentation.Customer;
 
+import Classes.Logger;
 import com.BikeStore.Data.Modal.Customer;
 import com.BikeStore.Logic.Customer.ShowCustomerLogic;
 import javafx.fxml.FXML;
@@ -11,9 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerPresentation implements Initializable {
-
-    private ShowCustomerLogic showCustomerLogic = new ShowCustomerLogic();
+public class CustomerPresentation extends ShowCustomerLogic implements Initializable {
 
     @FXML
     private TableView<Customer> tableView;
@@ -42,7 +41,7 @@ public class CustomerPresentation implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeCustomerFields();
-        tableView.getItems().setAll(showCustomerLogic.parseCustomerList());
+        tableView.getItems().setAll(parseCustomerList());
     }
 
 }

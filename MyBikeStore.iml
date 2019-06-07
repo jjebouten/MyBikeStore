@@ -23,5 +23,6 @@
     </orderEntry>
     <orderEntry type="library" exported="" name="SQL_Connector" level="project" />
     <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="module" module-name="logger" exported="" />
   </component>
 </module>

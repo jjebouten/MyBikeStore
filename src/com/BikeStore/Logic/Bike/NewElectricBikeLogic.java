@@ -7,10 +7,9 @@ import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.aler
 import static com.FieldValidator.FieldValidator.StringIsDouble;
 
 
-public class NewElectricBikeLogic {
+public class NewElectricBikeLogic extends NewBikeDefaultLogic {
 
     ElectricBikeRepository electricBikeRepository = new ElectricBikeRepository();
-    NewBikeDefaultLogic newBikeDefaultLogic = new NewBikeDefaultLogic();
     private static String bikeType = "ElectricBike";
     private ElectricBike electricBike = new ElectricBike(0, "", "", 0.0, 0, "", 0.0);
 
@@ -20,7 +19,7 @@ public class NewElectricBikeLogic {
             return false;
         }
 
-        if (newBikeDefaultLogic.validateBikeDefaultFields(bikeId, bikeBrand, rimSize, numberOfGears)) {
+        if (validateBikeDefaultFields(bikeId, bikeBrand, rimSize, numberOfGears)) {
             electricBike.setBikeId(Integer.parseInt(bikeId));
             electricBike.setBikeBrand(bikeBrand);
             electricBike.setBikeType(bikeType);

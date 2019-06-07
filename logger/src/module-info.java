@@ -1,0 +1,3 @@
+module Logger {
+    exports Classes;
+}

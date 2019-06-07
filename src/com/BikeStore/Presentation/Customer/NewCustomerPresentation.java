@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
 
-public class NewCustomerPresentation implements Initializable {
+public class NewCustomerPresentation {
 
     private NewCustomerLogic newCustomerLogic = new NewCustomerLogic();
 
@@ -46,11 +46,5 @@ public class NewCustomerPresentation implements Initializable {
         }
 
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-
 
 }

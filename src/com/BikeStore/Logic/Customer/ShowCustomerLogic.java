@@ -4,12 +4,10 @@ import com.BikeStore.Data.Repository.Customer.CustomerRepository;
 
 import java.util.List;
 
-public class ShowCustomerLogic {
+public class ShowCustomerLogic extends CustomerRepository {
 
-    CustomerRepository customerRepository = new CustomerRepository();
-
-    public List parseCustomerList() {
-        return customerRepository.getAllCustomers();
+    protected List parseCustomerList() {
+        return getAllCustomers();
     }
 
 }
