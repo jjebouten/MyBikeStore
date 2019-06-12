@@ -1,6 +1,5 @@
 package com.BikeStore.Presentation.ActionComponents;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -110,6 +109,12 @@ public class MenuPresentation {
 
     public void viewHome() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/homeContent.fxml"));
+        Pane newContent = fxmlLoader.load();
+        setNewContent(newContent);
+    }
+
+    public void viewPrintAllTasks() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/printAllTasks.fxml"));
         Pane newContent = fxmlLoader.load();
         setNewContent(newContent);
     }

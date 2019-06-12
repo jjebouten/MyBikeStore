@@ -47,6 +47,11 @@
                                 <MenuItem mnemonicParsing="false" onAction="#viewNewDelivery" text="New Delivery"/>
                             </items>
                         </Menu>
+                        <Menu mnemonicParsing="false" text="Print">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#viewPrintAllTasks" text="Show Print All Tasks"/>
+                            </items>
+                        </Menu>
                     </menus>
                 </MenuBar>
 

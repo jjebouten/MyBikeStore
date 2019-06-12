@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.Pane?>
+<?import java.lang.*?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.BikeStore.Presentation.Task.TaskExportPresentation">
+    <children>
+        <ComboBox fx:id="selectSorting" layoutX="128.0" layoutY="181.0" prefHeight="25.0" prefWidth="169.0"
+                  promptText="choose">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="TaskId"/>
+                    <String fx:value="CustomerId"/>
+                    <String fx:value="BikeId"/>
+                    <String fx:value="Indication"/>
+                    <String fx:value="TaskDate"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Button layoutX="130.0" layoutY="214.0" mnemonicParsing="false" onAction="#printAllTasks" text="PrintAllTasks"/>
+    </children>
+</Pane>

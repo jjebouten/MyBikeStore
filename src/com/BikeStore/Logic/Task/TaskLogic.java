@@ -7,9 +7,12 @@ import com.BikeStore.Data.Repository.Task.TaskRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.*;
 
 public class TaskLogic extends TaskRepository {
     private Task task = new Task(null, null, null, "", "", "", "");
@@ -78,6 +81,52 @@ public class TaskLogic extends TaskRepository {
 
     protected ObservableList getAllBikeIdsInObservableList() {
         return FXCollections.observableArrayList(getAllBikeIds());
+    }
+
+
+    protected void exportAllTasks(String sortingField) {
+        ArrayList<Task> taskList = getAllTasks();
+        File csvFile = new File("TaskExport.csv");
+
+        switch(sortingField) {
+            case "BikeId":
+                Collections.sort(taskList, Comparator.comparingInt(p -> p.getBike().getBikeId()));
+                break;
+            case "CustomerId":
+                Collections.sort(taskList, Comparator.comparingInt(p -> p.getCustomer().getCustomerId()));
+                break;
+            case "Indication":
+                Collections.sort(taskList, Comparator.comparing(Task::getIndication));
+                break;
+            case "TaskDate":
+                Collections.sort(taskList, Comparator.comparing(Task::getTaskDate));
+                break;
+            default:
+                Collections.sort(taskList, Comparator.comparingInt(Task::getTaskId));
+        }
+        try (PrintWriter csvWriter = new PrintWriter(new FileWriter(csvFile))){
+            csvWriter.print("TaskId,TaskDate,TaskDateReady,TaskIndication,TaskDescription,BikeId,BikeBrand,BikeType,BikeDateLastTask,CustomerId,FirstName,Lastname,Address,City,Email"+"\n");
+            for(Task task : taskList){
+                csvWriter.print(task.getTaskId()+",");
+                csvWriter.print(task.getTaskDate()+",");
+                csvWriter.print(task.getTaskReadyDate()+",");
+                csvWriter.print(task.getIndication()+",");
+                csvWriter.print(task.getDescription()+",");
+                csvWriter.print(task.getBike().getBikeId()+",");
+                csvWriter.print(task.getBike().getBikeBrand()+",");
+                csvWriter.print(task.getBike().getBikeType()+",");
+                csvWriter.print(task.getBike().getDateLastTask()+",");
+                csvWriter.print(task.getCustomer().getCustomerId()+",");
+                csvWriter.print(task.getCustomer().getFirstName()+",");
+                csvWriter.print(task.getCustomer().getLastName()+",");
+                csvWriter.print(task.getCustomer().getAddress()+",");
+                csvWriter.print(task.getCustomer().getCity()+",");
+                csvWriter.print(task.getCustomer().getEmail()+"\n");
+            }
+        } catch (IOException e) {
+            //Handle exception
+            e.printStackTrace();
+        }
     }
 
 }

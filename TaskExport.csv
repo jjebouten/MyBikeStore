@@ -1,0 +1,7 @@
+TaskId,TaskDate,TaskDateReady,TaskIndication,TaskDescription,BikeId,BikeBrand,BikeType,BikeDateLastTask,CustomerId,FirstName,Lastname,Address,City,Email
+1,2019-06-12,2019-06-12,A,Afleverbeurt,2,Gazelle,CityBike,2019-06-12,2,Tom,Steuber,84115 Koss Prairie,New Mikayla,clovis.purdy@example.net
+3,2019-06-12,null,A,Afleverbeurt,4,Gazelle,CityBike,null,3,Lennie,Goodwin,705 Austin Ramp Suite 350,North Akeem,skylar24@example.org
+4,2019-06-12,null,A,Afleverbeurt,6,Gazelle,CityBike,2019-05-30,5,Jacinto,Funk,1576 Josefa Canyon Suite 341,Lake Phoebe,hkerluke@example.com
+2,2019-06-12,2019-06-12,R,Band Repareren,7,Gazelle,CityBike,2019-06-12,3,Lennie,Goodwin,705 Austin Ramp Suite 350,North Akeem,skylar24@example.org
+5,2019-06-12,null,A,Afleverbeurt,8,Gazelle,CityBike,2019-06-06,1,Louisa,Murazik,278 Mikayla Mountain Suite 522,Lake Reecechester,herbert65@example.org
+6,2019-06-12,null,A,Afleverbeurt,22,Yeti,MountainBike,null,24,Emanuel,Huels,36532 Oscar Wall Apt. 050,New Turnerland,macejkovic.daren@example.org

@@ -3,15 +3,22 @@ package com.BikeStore.Presentation.Task;
 import com.BikeStore.Data.Modal.Task;
 import com.BikeStore.Logic.Task.TaskLogic;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
+import static com.FieldValidator.FieldValidator.isNullOrEmptyString;
 
 public class TaskPresentation extends TaskLogic implements Initializable {
 
@@ -33,6 +40,7 @@ public class TaskPresentation extends TaskLogic implements Initializable {
     private TableColumn<Task, String> description;
     @FXML
     private TableColumn<Task, Button> button;
+
 
     private void initializeTaskFields() {
         taskId.setCellValueFactory(new PropertyValueFactory<>("taskId"));
@@ -61,5 +69,7 @@ public class TaskPresentation extends TaskLogic implements Initializable {
         initializeTaskFields();
         tableView.getItems().setAll(parseTaskList());
     }
+
+
 
 }
