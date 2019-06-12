@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 24, 2019 at 04:57 PM
+-- Generation Time: Jun 12, 2019 at 02:41 PM
 -- Server version: 5.7.26-0ubuntu0.18.04.1
--- PHP Version: 7.2.17-0ubuntu0.18.04.1
+-- PHP Version: 7.0.32-2+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -43,14 +43,14 @@ CREATE TABLE `Bikes` (
 --
 
 INSERT INTO `Bikes` (`BikeId`, `BikeBrand`, `BikeType`, `RimSize`, `NumberOfGears`, `DateLastTask`, `BikeBag`, `BikePower`, `BikeSuspension`) VALUES
-(1, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
-(2, 'Gazelle', 'CityBike', 26, '3', '2019-05-24', 'false', NULL, ''),
+(1, 'Gazelle', 'CityBike', 26, '3', '2019-06-12', 'true', NULL, ''),
+(2, 'Gazelle', 'CityBike', 26, '3', '2019-06-12', 'false', NULL, ''),
 (3, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
 (4, 'Gazelle', 'CityBike', 26, '3', NULL, 'false', NULL, ''),
 (5, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
-(6, 'Gazelle', 'CityBike', 26, '3', NULL, 'false', NULL, ''),
-(7, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
-(8, 'Gazelle', 'CityBike', 26, '3', NULL, 'false', NULL, ''),
+(6, 'Gazelle', 'CityBike', 26, '3', '2019-05-30', 'false', NULL, ''),
+(7, 'Gazelle', 'CityBike', 26, '3', '2019-06-12', 'true', NULL, ''),
+(8, 'Gazelle', 'CityBike', 26, '3', '2019-06-06', 'false', NULL, ''),
 (9, 'Gazelle', 'CityBike', 26, '3', NULL, 'true', NULL, ''),
 (10, 'Gazelle', 'CityBike', 26, '3', NULL, 'false', NULL, ''),
 (11, 'Batavus', 'ElectricBike', 28, '7', NULL, '', 48, ''),
@@ -73,6 +73,25 @@ INSERT INTO `Bikes` (`BikeId`, `BikeBrand`, `BikeType`, `RimSize`, `NumberOfGear
 (28, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Full-suspension'),
 (29, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Hardtail'),
 (30, 'Yeti', 'MountainBike', 36, '21', NULL, '', NULL, 'Full-suspension');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Company`
+--
+
+CREATE TABLE `Company` (
+  `CompanyId` int(20) NOT NULL,
+  `ChamberOfCommerce` varchar(255) NOT NULL,
+  `IbanNumber` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Company`
+--
+
+INSERT INTO `Company` (`CompanyId`, `ChamberOfCommerce`, `IbanNumber`) VALUES
+(1, '12345678', 'NL91 ABNA 0417 1643 00');
 
 -- --------------------------------------------------------
 
@@ -153,6 +172,7 @@ INSERT INTO `Customers` (`CustomerId`, `FirstName`, `LastName`, `Address`, `City
 
 CREATE TABLE `Tasks` (
   `TaskId` int(11) NOT NULL,
+  `CompanyId` int(20) NOT NULL DEFAULT '1',
   `CustomerId` int(11) DEFAULT NULL,
   `BikeId` int(11) DEFAULT NULL,
   `Indication` varchar(255) DEFAULT NULL,
@@ -160,6 +180,14 @@ CREATE TABLE `Tasks` (
   `TaskReadyDate` date DEFAULT NULL,
   `Description` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Tasks`
+--
+
+INSERT INTO `Tasks` (`TaskId`, `CompanyId`, `CustomerId`, `BikeId`, `Indication`, `TaskDate`, `TaskReadyDate`, `Description`) VALUES
+(1, 1, 2, 2, 'A', '2019-06-12', '2019-06-12', 'Afleverbeurt'),
+(2, 1, 3, 7, 'R', '2019-06-12', '2019-06-12', 'Band Repareren');
 
 --
 -- Indexes for dumped tables
@@ -171,6 +199,13 @@ CREATE TABLE `Tasks` (
 ALTER TABLE `Bikes`
   ADD UNIQUE KEY `BikeId_2` (`BikeId`),
   ADD KEY `BikeId` (`BikeId`,`BikeBrand`,`BikeType`,`RimSize`,`NumberOfGears`,`DateLastTask`);
+
+--
+-- Indexes for table `Company`
+--
+ALTER TABLE `Company`
+  ADD PRIMARY KEY (`CompanyId`),
+  ADD KEY `CompanyId` (`CompanyId`);
 
 --
 -- Indexes for table `Customers`
@@ -188,7 +223,9 @@ ALTER TABLE `Tasks`
   ADD PRIMARY KEY (`TaskId`),
   ADD KEY `TaskId` (`TaskId`,`CustomerId`,`BikeId`,`Indication`,`TaskDate`,`TaskReadyDate`),
   ADD KEY `BikeId` (`BikeId`),
-  ADD KEY `CustomerId` (`CustomerId`);
+  ADD KEY `CustomerId` (`CustomerId`),
+  ADD KEY `TaskId_2` (`TaskId`),
+  ADD KEY `CompanyId` (`CompanyId`);
 
 --
 -- Constraints for dumped tables
@@ -198,7 +235,9 @@ ALTER TABLE `Tasks`
 -- Constraints for table `Tasks`
 --
 ALTER TABLE `Tasks`
-  ADD CONSTRAINT `Tasks_ibfk_2` FOREIGN KEY (`CustomerId`) REFERENCES `Customers` (`CustomerId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `Tasks_ibfk_2` FOREIGN KEY (`CustomerId`) REFERENCES `Customers` (`CustomerId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Tasks_ibfk_3` FOREIGN KEY (`BikeId`) REFERENCES `Bikes` (`BikeId`),
+  ADD CONSTRAINT `Tasks_ibfk_4` FOREIGN KEY (`CompanyId`) REFERENCES `Company` (`CompanyId`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
