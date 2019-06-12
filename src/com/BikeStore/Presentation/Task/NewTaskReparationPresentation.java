@@ -1,6 +1,6 @@
 package com.BikeStore.Presentation.Task;
 
-import com.BikeStore.Logic.Task.NewTaskLogic;
+import com.BikeStore.Logic.Task.TaskLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -9,9 +9,10 @@ import javafx.scene.control.TextArea;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.*;
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertWarning;
 
-public class NewTaskReparationPresentation extends NewTaskLogic implements Initializable {
+public class NewTaskReparationPresentation extends TaskLogic implements Initializable {
 
     @FXML
     private ComboBox cmbCustomer;
@@ -37,8 +38,7 @@ public class NewTaskReparationPresentation extends NewTaskLogic implements Initi
             cmbCustomer.setValue(0);
             cmbBike.setValue(0);
             txtDescription.setText("");
-        }
-        else {
+        } else {
             alertWarning("Error 1558707296", "Invalid customerId or BikeId");
         }
     }

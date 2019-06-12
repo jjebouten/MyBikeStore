@@ -1,19 +1,12 @@
 package com.BikeStore.Presentation.Customer;
 
-import com.BikeStore.Logic.Customer.NewCustomerLogic;
-import javafx.event.ActionEvent;
+import com.BikeStore.Logic.Customer.CustomerLogic;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
 
-public class NewCustomerPresentation {
-
-    private NewCustomerLogic newCustomerLogic = new NewCustomerLogic();
+public class NewCustomerPresentation extends CustomerLogic {
 
     @FXML
     private TextField txtFirstname;
@@ -36,7 +29,7 @@ public class NewCustomerPresentation {
         String city = txtCity.getText();
         String email = txtEmail.getText();
 
-        if (newCustomerLogic.createNewCustomer(firstName, lastName, address, city, email)){
+        if (createNewCustomer(firstName, lastName, address, city, email)){
            alertSucces("Succes", "Customer succesfully created");
            txtFirstname.setText("");
            txtLastname.setText("");

@@ -3,26 +3,26 @@ package com.BikeStore.Logic.Customer;
 import com.BikeStore.Data.Modal.Customer;
 import com.BikeStore.Data.Repository.Customer.CustomerRepository;
 
+import java.util.List;
+
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
 import static com.FieldValidator.FieldValidator.isNullOrEmptyString;
 import static com.FieldValidator.FieldValidator.isValidEmailAddress;
 
-public class NewCustomerLogic {
-
-    private CustomerRepository CustomerRepo = new CustomerRepository();
+public class CustomerLogic extends CustomerRepository {
 
     public boolean createNewCustomer(String firstName, String lastName, String address, String city, String email) {
 
         if (validateCustomer(firstName, lastName, address, city, email)) {
             Customer newCustomer = new Customer(createNewCustomerId(), firstName, lastName, address, city, email);
-            CustomerRepo.newCustomer(newCustomer);
+            newCustomer(newCustomer);
             return true;
         } else
             return false;
     }
 
     private int createNewCustomerId() {
-        return CustomerRepo.getMaxCustomerId() + 1;
+        return getMaxCustomerId() + 1;
     }
 
     private boolean validateCustomer(String firstName, String lastName, String address, String city, String email) {
@@ -37,5 +37,10 @@ public class NewCustomerLogic {
         }
         return true;
     }
+
+    protected List parseCustomerList() {
+        return getAllCustomers();
+    }
+
 
 }

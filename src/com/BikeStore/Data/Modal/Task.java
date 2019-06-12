@@ -5,7 +5,7 @@ public class Task {
     private Customer customer;
     private BikeDefault bike;
     private String indication;
-    private String  taskDate;
+    private String taskDate;
     private String taskReadyDate;
     private String description;
 

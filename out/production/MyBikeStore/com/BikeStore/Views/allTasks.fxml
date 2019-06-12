@@ -17,7 +17,7 @@
                 <TableColumn prefWidth="100.0" text="Task Date" fx:id="taskDate"/>
                 <TableColumn prefWidth="125.0" text="Task Ready" fx:id="taskReadyDate"/>
                 <TableColumn prefWidth="225.0" text="Description" fx:id="description"/>
-                <TableColumn prefWidth="125.0" text="button" fx:id="button"/>
+                <TableColumn prefWidth="125.0" text="Ready Task" fx:id="button"/>
             </columns>
         </TableView>
 

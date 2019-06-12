@@ -1,8 +1,7 @@
 package com.BikeStore.Presentation.Customer;
 
-import Classes.Logger;
 import com.BikeStore.Data.Modal.Customer;
-import com.BikeStore.Logic.Customer.ShowCustomerLogic;
+import com.BikeStore.Logic.Customer.CustomerLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -12,7 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerPresentation extends ShowCustomerLogic implements Initializable {
+public class CustomerPresentation extends CustomerLogic implements Initializable {
 
     @FXML
     private TableView<Customer> tableView;

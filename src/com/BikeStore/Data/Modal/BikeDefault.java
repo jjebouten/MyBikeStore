@@ -1,6 +1,6 @@
 package com.BikeStore.Data.Modal;
 
-public abstract class BikeDefault implements BikeInterface {
+public abstract class BikeDefault {
     private int bikeId;
     private String bikeBrand;
     private String bikeType;
@@ -17,27 +17,22 @@ public abstract class BikeDefault implements BikeInterface {
         this.dateLastTask = dateLastTask;
     }
 
-    @Override
     public int getBikeId() {
         return bikeId;
     }
 
-    @Override
     public String getBikeBrand() {
         return bikeBrand;
     }
 
-    @Override
     public String getBikeType() {
         return bikeType;
     }
 
-    @Override
     public double getRimSize() {
         return rimSize;
     }
 
-    @Override
     public int getNumberOfGears() {
         return numberOfGears;
     }
