@@ -18,11 +18,11 @@ public class CityBikeLogic extends CityBikeRepository {
         cityBike.setRimSize(Double.parseDouble(rimSize));
         cityBike.setNumberOfGears(Integer.parseInt(numberOfGears));
         cityBike.setBikeBags(bikeBags);
-        createNewCityBike(cityBike);
+        createNew(cityBike);
     }
 
     public List parseCityBikeList() {
-        return getAllCityBikes();
+        return getAll();
     }
 
 }

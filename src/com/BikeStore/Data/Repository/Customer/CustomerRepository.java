@@ -15,7 +15,7 @@ public class CustomerRepository extends QueryBuilder {
 
     public ArrayList getAllCustomers() {
 
-        String query = getAll(Table);
+        String query = getAllQuery(Table);
 
         Connection conn = ConnectDB();
         ArrayList<Customer> queryResult = new ArrayList<>();
@@ -76,7 +76,7 @@ public class CustomerRepository extends QueryBuilder {
 
     public Customer getCustomerById(int customerId) {
 
-        String query = getAllByFieldThroughInt(Table, "CustomerId", customerId);
+        String query = getAllByFieldThroughIntQuery(Table, "CustomerId", customerId);
         Customer customer = new Customer(customerId, "", "", "", "", "");
         Connection conn = ConnectDB();
         try {

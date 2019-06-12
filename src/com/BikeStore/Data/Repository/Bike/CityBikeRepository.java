@@ -1,5 +1,6 @@
 package com.BikeStore.Data.Repository.Bike;
 
+import com.BikeStore.Data.Modal.BikeDefault;
 import com.BikeStore.Data.Modal.CityBike;
 import com.BikeStore.Data.Repository.QueryBuilder;
 
@@ -11,9 +12,9 @@ public class CityBikeRepository extends QueryBuilder {
     static String Table = "Bikes";
     static String BikeType = "CityBike";
 
-    public ArrayList getAllCityBikes() {
+    public ArrayList getAll() {
 
-        String query = getAllByFieldThroughString("Bikes", "BikeType", BikeType);
+        String query = getAllByFieldThroughStringQuery("Bikes", "BikeType", BikeType);
 
         Connection conn = ConnectDB();
         ArrayList<CityBike> queryResult = new ArrayList<>();
@@ -43,7 +44,7 @@ public class CityBikeRepository extends QueryBuilder {
         return queryResult;
     }
 
-    public void createNewCityBike(CityBike cityBike) {
+    public void createNew(CityBike cityBike) {
         try {
             // create a mysql database connection
             Connection conn = ConnectDB();

@@ -20,7 +20,7 @@ public class TaskRepository extends QueryBuilder {
     BikeDefaultRepository bikeDefaultRepository= new BikeDefaultRepository();
 
     public ArrayList getAllTasks() {
-        String query = getAll(Table);
+        String query = getAllQuery(Table);
 
         Connection conn = ConnectDB();
         ArrayList<Task> queryResult = new ArrayList<>();

@@ -18,11 +18,11 @@ public class ElectricBikeLogic extends ElectricBikeRepository {
         electricBike.setRimSize(Double.parseDouble(rimSize));
         electricBike.setNumberOfGears(Integer.parseInt(numberOfGears));
         electricBike.setPower(Double.parseDouble(power));
-        createNewElectricBike(electricBike);
+        createNew(electricBike);
     }
 
     public List parseElectricBikeList() {
-        return getAllElectricBikes();
+        return getAll();
     }
 
 }

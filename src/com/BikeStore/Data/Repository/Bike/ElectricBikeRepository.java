@@ -14,9 +14,9 @@ public class ElectricBikeRepository extends QueryBuilder {
     static String Table = "Bikes";
     static String BikeType = "ElectricBike";
 
-    public ArrayList getAllElectricBikes() {
+    public ArrayList getAll() {
 
-        String query = getAllByFieldThroughString("Bikes", "BikeType", BikeType);
+        String query = getAllByFieldThroughStringQuery("Bikes", "BikeType", BikeType);
 
         Connection conn = ConnectDB();
         ArrayList<ElectricBike> queryResult = new ArrayList<>();
@@ -46,7 +46,7 @@ public class ElectricBikeRepository extends QueryBuilder {
         return queryResult;
     }
 
-    public void createNewElectricBike(ElectricBike electricBike) {
+    public void createNew(ElectricBike electricBike) {
         try {
             // create a mysql database connection
             Connection conn = ConnectDB();

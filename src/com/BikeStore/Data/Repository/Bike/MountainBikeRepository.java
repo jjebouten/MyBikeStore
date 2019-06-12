@@ -14,9 +14,9 @@ public class MountainBikeRepository extends QueryBuilder {
     static String Table = "Bikes";
     static String BikeType = "MountainBike";
 
-    public ArrayList getAllMountainBikes() {
+    public ArrayList getAll() {
 
-        String query = getAllByFieldThroughString("Bikes", "BikeType", BikeType);
+        String query = getAllByFieldThroughStringQuery("Bikes", "BikeType", BikeType);
 
         Connection conn = ConnectDB();
         ArrayList<MountainBike> queryResult = new ArrayList<>();
@@ -46,7 +46,7 @@ public class MountainBikeRepository extends QueryBuilder {
         return queryResult;
     }
 
-    public void createNewMountain(MountainBike mountainBike) {
+    public void createNew(MountainBike mountainBike) {
         try {
             // create a mysql database connection
             Connection conn = ConnectDB();

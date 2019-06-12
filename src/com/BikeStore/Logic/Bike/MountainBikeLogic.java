@@ -18,11 +18,11 @@ public class MountainBikeLogic extends MountainBikeRepository {
         mountainBike.setRimSize(Double.parseDouble(rimSize));
         mountainBike.setNumberOfGears(Integer.parseInt(numberOfGears));
         mountainBike.setSuspension(bikeSuspension);
-        createNewMountain(mountainBike);
+        createNew(mountainBike);
     }
 
     public List parseMountainBikeList() {
-        return getAllMountainBikes();
+        return getAll();
     }
 
 }

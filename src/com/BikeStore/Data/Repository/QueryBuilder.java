@@ -8,15 +8,15 @@ import java.util.ArrayList;
 
 public class QueryBuilder extends Database implements QueryBuilderInterface {
 
-    public String getAll(String table) {
+    public String getAllQuery(String table) {
         return "SELECT * FROM " + table;
     }
 
-    public String getAllByFieldThroughInt(String table, String field, int IntegerValue) {
+    public String getAllByFieldThroughIntQuery(String table, String field, int IntegerValue) {
         return "SELECT * FROM " + table + " WHERE " + field + "=" + IntegerValue;
     }
 
-    public String getAllByFieldThroughString(String table, String field, String StringValue) {
+    public String getAllByFieldThroughStringQuery(String table, String field, String StringValue) {
         return "SELECT * FROM " + table + " WHERE " + field + "='" + StringValue + "'";
     }
 

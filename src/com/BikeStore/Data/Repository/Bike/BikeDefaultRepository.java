@@ -18,7 +18,7 @@ public class BikeDefaultRepository extends QueryBuilder {
         //Always exists so it does nothing
         boolean exists = true;
 
-        String query = getAllByFieldThroughInt("Bikes", "bikeId", bikeId);
+        String query = getAllByFieldThroughIntQuery("Bikes", "bikeId", bikeId);
         Connection conn = ConnectDB();
         try {
             // create the java statement
@@ -66,7 +66,7 @@ public class BikeDefaultRepository extends QueryBuilder {
 
     public BikeDefault getBikeById(int bikeId) {
 
-            String query = getAllByFieldThroughInt(Table, "bikeId", bikeId);
+            String query = getAllByFieldThroughIntQuery(Table, "bikeId", bikeId);
             BikeDefault bike = new BikeDefault(bikeId, "", "", 0.0, 0, "") {
             };
             Connection conn = ConnectDB();

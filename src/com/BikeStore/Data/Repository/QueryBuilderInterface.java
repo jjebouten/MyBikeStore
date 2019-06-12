@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public interface QueryBuilderInterface {
 
-    String getAll(String table);
+    String getAllQuery(String table);
 
-    String getAllByFieldThroughInt(String table, String field, int IntegerValue);
+    String getAllByFieldThroughIntQuery(String table, String field, int IntegerValue);
 
-    String getAllByFieldThroughString(String table, String field, String StringValue);
+    String getAllByFieldThroughStringQuery(String table, String field, String StringValue);
 
     int getMax(String table, String field);
 
