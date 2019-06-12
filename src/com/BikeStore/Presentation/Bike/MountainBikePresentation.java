@@ -2,7 +2,7 @@ package com.BikeStore.Presentation.Bike;
 
 import com.BikeStore.Data.Modal.BikeDefault;
 import com.BikeStore.Data.Modal.MountainBike;
-import com.BikeStore.Logic.Bike.ShowMountainBikeLogic;
+import com.BikeStore.Logic.Bike.MountainBikeLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class MountainBikePresentation extends BikeDefaultPresentation implements Initializable {
 
-    private ShowMountainBikeLogic showMountainBikeLogic = new ShowMountainBikeLogic();
+    private MountainBikeLogic mountainBikeLogic = new MountainBikeLogic();
 
     @FXML
     private TableView<MountainBike> tableView;
@@ -26,7 +26,7 @@ public class MountainBikePresentation extends BikeDefaultPresentation implements
 
         initializeBikeDefaultFields();
         suspension.setCellValueFactory(new PropertyValueFactory<>("suspension"));
-        tableView.getItems().setAll(showMountainBikeLogic.parseMountainBikeList());
+        tableView.getItems().setAll(mountainBikeLogic.parseMountainBikeList());
     }
 
 }

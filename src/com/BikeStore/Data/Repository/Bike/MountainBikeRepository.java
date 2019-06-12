@@ -46,7 +46,7 @@ public class MountainBikeRepository extends QueryBuilder {
         return queryResult;
     }
 
-    public void newMountainBike(MountainBike mountainBike) {
+    public void createNewMountain(MountainBike mountainBike) {
         try {
             // create a mysql database connection
             Connection conn = ConnectDB();

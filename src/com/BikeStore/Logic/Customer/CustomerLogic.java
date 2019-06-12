@@ -5,42 +5,20 @@ import com.BikeStore.Data.Repository.Customer.CustomerRepository;
 
 import java.util.List;
 
-import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
-import static com.FieldValidator.FieldValidator.isNullOrEmptyString;
-import static com.FieldValidator.FieldValidator.isValidEmailAddress;
-
 public class CustomerLogic extends CustomerRepository {
 
-    public boolean createNewCustomer(String firstName, String lastName, String address, String city, String email) {
-
-        if (validateCustomer(firstName, lastName, address, city, email)) {
-            Customer newCustomer = new Customer(createNewCustomerId(), firstName, lastName, address, city, email);
-            newCustomer(newCustomer);
-            return true;
-        } else
-            return false;
+    public void createNewCustomer(String firstName, String lastName, String address, String city, String email) {
+        Customer newCustomer = new Customer(createNewCustomerId(), firstName, lastName, address, city, email);
+        newCustomer(newCustomer);
     }
 
     private int createNewCustomerId() {
         return getMaxCustomerId() + 1;
     }
 
-    private boolean validateCustomer(String firstName, String lastName, String address, String city, String email) {
-        if (isNullOrEmptyString(firstName, lastName, address, city)) {
-            alertError("Error 1557489176", "Invalid input all fields are required");
-            return false;
-        }
-
-        if (!isValidEmailAddress(email)) {
-            alertError("Error 1557489696", "Invalid email");
-            return false;
-        }
-        return true;
-    }
 
     protected List parseCustomerList() {
         return getAllCustomers();
     }
-
 
 }

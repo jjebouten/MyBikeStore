@@ -43,7 +43,7 @@ public class CityBikeRepository extends QueryBuilder {
         return queryResult;
     }
 
-    public void newCityBike(CityBike cityBike) {
+    public void createNewCityBike(CityBike cityBike) {
         try {
             // create a mysql database connection
             Connection conn = ConnectDB();

@@ -1,35 +1,30 @@
 package com.BikeStore.Presentation.Bike;
 
-import com.BikeStore.Logic.Bike.NewMountainBikeLogic;
+import com.BikeStore.Logic.Bike.MountainBikeLogic;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
 
-public class NewMountainBikePresentation {
+public class NewMountainBikePresentation extends NewBikeDefaultPresentation {
 
-    private NewMountainBikeLogic newMountainBikeLogic = new NewMountainBikeLogic();
+    private MountainBikeLogic newMountainBikeLogic = new MountainBikeLogic();
 
-    @FXML
-    public TextField txtBikeId;
-    @FXML
-    public TextField txtBikeBrand;
-    @FXML
-    public TextField txtRimSize;
-    @FXML
-    public TextField txtNumberOfGears;
     @FXML
     public ComboBox selectBikeSuspension;
 
     public void registerNewMountainBike() {
-        if (newMountainBikeLogic.createNewMountainBike(txtBikeId.getText(),
+        if (validateBikeDefaultFields(
+                txtBikeId.getText(),
                 txtBikeBrand.getText(),
-                txtRimSize.getText(),
-                txtNumberOfGears.getText(),
-                (String) selectBikeSuspension.getValue())) {
+                txtRimSize.getText(), txtNumberOfGears.getText()) && validateMountainBikeSuspension(Optional.ofNullable((String)selectBikeSuspension.getValue()).orElse(""))) {
+            newMountainBikeLogic.createNewMountainBike(txtBikeId.getText(),
+                    txtBikeBrand.getText(),
+                    txtRimSize.getText(),
+                    txtNumberOfGears.getText(),
+                    (String) selectBikeSuspension.getValue());
             alertSucces("Succes", "MountainBike succesfully created");
             txtBikeId.setText("");
             txtBikeBrand.setText("");

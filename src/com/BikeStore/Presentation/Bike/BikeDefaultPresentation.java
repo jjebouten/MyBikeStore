@@ -8,6 +8,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.Date;
 
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
+import static com.FieldValidator.FieldValidator.*;
+import static com.FieldValidator.FieldValidator.isPositiveInteger;
+
 class BikeDefaultPresentation {
 
     @FXML

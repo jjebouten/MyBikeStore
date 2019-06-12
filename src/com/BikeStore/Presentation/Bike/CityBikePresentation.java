@@ -2,7 +2,7 @@ package com.BikeStore.Presentation.Bike;
 
 
 import com.BikeStore.Data.Modal.BikeDefault;
-import com.BikeStore.Logic.Bike.ShowCityBikeLogic;
+import com.BikeStore.Logic.Bike.CityBikeLogic;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class CityBikePresentation extends BikeDefaultPresentation implements Initializable {
 
-    private ShowCityBikeLogic showCityBikeLogic = new ShowCityBikeLogic();
+    private CityBikeLogic CityBikeLogic = new CityBikeLogic();
 
     @FXML
     private TableView<BikeDefault> tableView;
@@ -25,7 +25,7 @@ public class CityBikePresentation extends BikeDefaultPresentation implements Ini
     public void initialize(URL location, ResourceBundle resources) {
         initializeBikeDefaultFields();
         bikeBags.setCellValueFactory(new PropertyValueFactory<>("bikeBags"));
-        tableView.getItems().setAll(showCityBikeLogic.parseCityBikeList());
+        tableView.getItems().setAll(CityBikeLogic.parseCityBikeList());
     }
 
 }

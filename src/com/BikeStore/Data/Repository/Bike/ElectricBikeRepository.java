@@ -46,7 +46,7 @@ public class ElectricBikeRepository extends QueryBuilder {
         return queryResult;
     }
 
-    public void newElectricBike(ElectricBike electricBike) {
+    public void createNewElectricBike(ElectricBike electricBike) {
         try {
             // create a mysql database connection
             Connection conn = ConnectDB();
