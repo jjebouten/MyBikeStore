@@ -1,22 +1,27 @@
 package com.BikeStore.Data.Repository.Bike;
 
 import com.BikeStore.Data.Modal.ElectricBike;
-import com.BikeStore.Data.Repository.QueryBuilder;
+import com.BikeStore.Data.Modal.MountainBike;
+import com.BikeStore.Data.Repository.Queryable;
+import com.BikeStore.Data.Repository.Repository;
+import com.BikeStore.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
-public class ElectricBikeRepository extends QueryBuilder {
+public class ElectricBikeRepository extends Repository implements Queryable<ElectricBike> {
 
     static String Table = "Bikes";
+    static String BikeTypeField = "BikeType";
     static String BikeType = "ElectricBike";
 
-    public ArrayList getAll() {
-
-        String query = getAllByFieldThroughStringQuery("Bikes", "BikeType", BikeType);
+    @Override
+    public ArrayList<ElectricBike> getAll() {
+        String query = "SELECT * FROM " + Table + " WHERE " + BikeTypeField + "='" + BikeType + "'";
 
         Connection conn = ConnectDB();
         ArrayList<ElectricBike> queryResult = new ArrayList<>();
@@ -46,6 +51,7 @@ public class ElectricBikeRepository extends QueryBuilder {
         return queryResult;
     }
 
+    @Override
     public void createNew(ElectricBike electricBike) {
         try {
             // create a mysql database connection

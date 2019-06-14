@@ -9,16 +9,16 @@ public class CustomerLogic extends CustomerRepository {
 
     public void createNewCustomer(String firstName, String lastName, String address, String city, String email) {
         Customer newCustomer = new Customer(createNewCustomerId(), firstName, lastName, address, city, email);
-        newCustomer(newCustomer);
+        createNew(newCustomer);
     }
 
     private int createNewCustomerId() {
-        return getMaxCustomerId() + 1;
+        return getMax("CustomerId", "Customers") + 1;
     }
 
 
     protected List parseCustomerList() {
-        return getAllCustomers();
+        return getAll();
     }
 
 }

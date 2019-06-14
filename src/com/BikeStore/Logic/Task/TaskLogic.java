@@ -30,7 +30,7 @@ public class TaskLogic extends TaskRepository {
     }
 
     protected List parseTaskList() {
-        return getAllTasks();
+        return getAll();
     }
 
     protected void setDateReady(Integer bikeId, Integer taskId) {
@@ -63,29 +63,29 @@ public class TaskLogic extends TaskRepository {
     private boolean newTaskDefault(Integer customerId, Integer bikeId, String description, String indicationReparation) {
         task.setTaskId(createNewTaskId());
         task.setCustomer(customerRepository.getCustomerById(customerId));
-        task.setBike(bikeRepository.getBikeById(bikeId));
+        task.setBike(bikeRepository.getById(bikeId));
         task.setDescription(description);
         task.setIndication(indicationReparation);
         task.setTaskDate(getCurrentDate());
-        newTask(task);
+        createNew(task);
         return true;
     }
 
     private int createNewTaskId() {
-        return (getMaxTaskId() + 1);
+        return (getMax("TaskId", "Tasks") + 1);
     }
 
     protected ObservableList getAllCustomerIdsInObservableList() {
-        return FXCollections.observableArrayList(getAllCustomerIds());
+        return FXCollections.observableArrayList(getIntegerArrayListOfField("Customers", "CustomerId"));
     }
 
     protected ObservableList getAllBikeIdsInObservableList() {
-        return FXCollections.observableArrayList(getAllBikeIds());
+        return FXCollections.observableArrayList(getIntegerArrayListOfField("Bikes", "BikeId"));
     }
 
 
     protected void exportAllTasks(String sortingField) {
-        ArrayList<Task> taskList = getAllTasks();
+        ArrayList<Task> taskList = getAll();
         File csvFile = new File("TaskExport.csv");
 
         switch(sortingField) {

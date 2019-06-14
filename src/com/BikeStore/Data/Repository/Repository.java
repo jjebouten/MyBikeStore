@@ -6,23 +6,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class QueryBuilder extends Database implements QueryBuilderInterface {
+public class Repository extends Database {
 
-    public String getAllQuery(String table) {
-        return "SELECT * FROM " + table;
-    }
-
-    public String getAllByFieldThroughIntQuery(String table, String field, int IntegerValue) {
-        return "SELECT * FROM " + table + " WHERE " + field + "=" + IntegerValue;
-    }
-
-    public String getAllByFieldThroughStringQuery(String table, String field, String StringValue) {
-        return "SELECT * FROM " + table + " WHERE " + field + "='" + StringValue + "'";
-    }
-
-    public int getMax(String table, String field) {
-
-        String query = "SELECT MAX(" + field + ") FROM " + table;
+    public int getMax(String uidFieldName, String table) {
+        String query = "SELECT MAX(" + uidFieldName + ") FROM " + table;
 
         Connection conn = ConnectDB();
         int max = 0;

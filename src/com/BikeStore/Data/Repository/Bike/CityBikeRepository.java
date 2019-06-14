@@ -1,20 +1,22 @@
 package com.BikeStore.Data.Repository.Bike;
 
-import com.BikeStore.Data.Modal.BikeDefault;
 import com.BikeStore.Data.Modal.CityBike;
-import com.BikeStore.Data.Repository.QueryBuilder;
+import com.BikeStore.Data.Repository.Queryable;
+import com.BikeStore.Data.Repository.Repository;
+import com.BikeStore.Database;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CityBikeRepository extends QueryBuilder {
+public class CityBikeRepository extends Repository implements Queryable<CityBike> {
 
     static String Table = "Bikes";
+    static String BikeTypeField = "BikeType";
     static String BikeType = "CityBike";
 
-    public ArrayList getAll() {
-
-        String query = getAllByFieldThroughStringQuery("Bikes", "BikeType", BikeType);
+    @Override
+    public ArrayList<CityBike> getAll() {
+        String query = "SELECT * FROM " + Table + " WHERE " + BikeTypeField + "='" + BikeType + "'";
 
         Connection conn = ConnectDB();
         ArrayList<CityBike> queryResult = new ArrayList<>();
@@ -44,6 +46,8 @@ public class CityBikeRepository extends QueryBuilder {
         return queryResult;
     }
 
+
+    @Override
     public void createNew(CityBike cityBike) {
         try {
             // create a mysql database connection
@@ -73,4 +77,5 @@ public class CityBikeRepository extends QueryBuilder {
             System.err.println(e.getMessage());
         }
     }
+
 }

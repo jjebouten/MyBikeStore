@@ -1,7 +1,9 @@
 package com.BikeStore.Data.Repository.Customer;
 
 import com.BikeStore.Data.Modal.Customer;
-import com.BikeStore.Data.Repository.QueryBuilder;
+import com.BikeStore.Data.Repository.Queryable;
+import com.BikeStore.Data.Repository.Repository;
+import com.BikeStore.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,13 +11,42 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class CustomerRepository extends QueryBuilder {
+public class CustomerRepository extends Repository implements Queryable<Customer> {
 
     static String Table = "Customers";
+    static String UidFieldName = "CustomerId";
 
-    public ArrayList getAllCustomers() {
+    public Customer getCustomerById(int customerId) {
+        String query = "SELECT * FROM " + Table + " WHERE " + UidFieldName + "='" + customerId + "'";
+        Customer customer = new Customer(customerId, "", "", "", "", "");
+        Connection conn = ConnectDB();
+        try {
+            // create the java statement
+            Statement st = conn.createStatement();
 
-        String query = getAllQuery(Table);
+            // execute the query, and get a java resultset
+            ResultSet result = st.executeQuery(query);
+
+            // iterate through the java resultset
+            while (result.next()) {
+                customer.setFirstName(result.getString("FirstName"));
+                customer.setLastName(result.getString("LastName"));
+                customer.setAddress(result.getString("Address"));
+                customer.setCity(result.getString("City"));
+                customer.setEmail(result.getString("Email"));
+            }
+            st.close();
+        } catch (Exception e) {
+            System.err.println("Got an exception!");
+            System.err.println(e.getMessage());
+        }
+        return customer;
+    }
+
+    @Override
+    public ArrayList<Customer> getAll() {
+
+        String query = "SELECT * FROM " + Table;
 
         Connection conn = ConnectDB();
         ArrayList<Customer> queryResult = new ArrayList<>();
@@ -41,10 +72,10 @@ public class CustomerRepository extends QueryBuilder {
             System.err.println("Got an exception!");
             System.err.println(e.getMessage());
         }
-        return queryResult;
-    }
+        return queryResult;    }
 
-    public void newCustomer(Customer customer) {
+    @Override
+    public void createNew(Customer customer) {
         try {
             // create a mysql database connection
             Connection conn = ConnectDB();
@@ -73,37 +104,4 @@ public class CustomerRepository extends QueryBuilder {
             System.err.println(e.getMessage());
         }
     }
-
-    public Customer getCustomerById(int customerId) {
-
-        String query = getAllByFieldThroughIntQuery(Table, "CustomerId", customerId);
-        Customer customer = new Customer(customerId, "", "", "", "", "");
-        Connection conn = ConnectDB();
-        try {
-            // create the java statement
-            Statement st = conn.createStatement();
-
-            // execute the query, and get a java resultset
-            ResultSet result = st.executeQuery(query);
-
-            // iterate through the java resultset
-            while (result.next()) {
-                customer.setFirstName(result.getString("FirstName"));
-                customer.setLastName(result.getString("LastName"));
-                customer.setAddress(result.getString("Address"));
-                customer.setCity(result.getString("City"));
-                customer.setEmail(result.getString("Email"));
-            }
-            st.close();
-        } catch (Exception e) {
-            System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
-        }
-        return customer;
-    }
-
-    public int getMaxCustomerId() {
-        return getMax(Table, "customerId");
-    }
-
 }
