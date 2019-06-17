@@ -11,6 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
+
 public class ElectricBikePresentation extends BikeDefaultPresentation implements Initializable {
 
     private ElectricBikeLogic electricBikeLogic = new ElectricBikeLogic();
@@ -24,7 +26,11 @@ public class ElectricBikePresentation extends BikeDefaultPresentation implements
     public void initialize(URL location, ResourceBundle resources) {
         initializeBikeDefaultFields();
         power.setCellValueFactory(new PropertyValueFactory<>("power"));
-        tableView.getItems().setAll(electricBikeLogic.parseElectricBikeList());
+        if (electricBikeLogic.parseElectricBikeList().size() > 0) {
+            tableView.getItems().setAll(electricBikeLogic.parseElectricBikeList());
+        } else {
+            alertError("Error 1552345465", "Something went wrong, Could not fetch results");
+        }
     }
 
 }

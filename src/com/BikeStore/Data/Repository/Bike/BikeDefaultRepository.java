@@ -3,14 +3,12 @@ package com.BikeStore.Data.Repository.Bike;
 import com.BikeStore.Data.Modal.BikeDefault;
 import com.BikeStore.Data.Repository.Queryable;
 import com.BikeStore.Data.Repository.Repository;
-import com.BikeStore.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class BikeDefaultRepository extends Repository implements Queryable {

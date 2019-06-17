@@ -12,6 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
+
 public class CityBikePresentation extends BikeDefaultPresentation implements Initializable {
 
     private CityBikeLogic CityBikeLogic = new CityBikeLogic();
@@ -25,7 +27,11 @@ public class CityBikePresentation extends BikeDefaultPresentation implements Ini
     public void initialize(URL location, ResourceBundle resources) {
         initializeBikeDefaultFields();
         bikeBags.setCellValueFactory(new PropertyValueFactory<>("bikeBags"));
-        tableView.getItems().setAll(CityBikeLogic.parseCityBikeList());
+        if (CityBikeLogic.parseCityBikeList().size() > 0) {
+            tableView.getItems().setAll(CityBikeLogic.parseCityBikeList());
+        } else {
+            alertError("Error 1558345465", "Something went wrong, Could not fetch results");
+        }
     }
 
 }

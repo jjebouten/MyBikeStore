@@ -3,7 +3,6 @@ package com.BikeStore.Data.Repository.Bike;
 import com.BikeStore.Data.Modal.MountainBike;
 import com.BikeStore.Data.Repository.Queryable;
 import com.BikeStore.Data.Repository.Repository;
-import com.BikeStore.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,8 +42,7 @@ public class MountainBikeRepository extends Repository implements Queryable<Moun
             }
             st.close();
         } catch (Exception e) {
-            System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
+            return queryResult;
         }
         return queryResult;
     }

@@ -3,9 +3,11 @@ package com.BikeStore.Data.Repository.Bike;
 import com.BikeStore.Data.Modal.CityBike;
 import com.BikeStore.Data.Repository.Queryable;
 import com.BikeStore.Data.Repository.Repository;
-import com.BikeStore.Database;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CityBikeRepository extends Repository implements Queryable<CityBike> {
@@ -40,8 +42,7 @@ public class CityBikeRepository extends Repository implements Queryable<CityBike
             }
             st.close();
         } catch (Exception e) {
-            System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
+            return queryResult;
         }
         return queryResult;
     }

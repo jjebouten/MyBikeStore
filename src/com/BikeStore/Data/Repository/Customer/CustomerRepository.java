@@ -3,7 +3,6 @@ package com.BikeStore.Data.Repository.Customer;
 import com.BikeStore.Data.Modal.Customer;
 import com.BikeStore.Data.Repository.Queryable;
 import com.BikeStore.Data.Repository.Repository;
-import com.BikeStore.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -69,10 +68,10 @@ public class CustomerRepository extends Repository implements Queryable<Customer
             }
             st.close();
         } catch (Exception e) {
-            System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
+            return queryResult;
         }
-        return queryResult;    }
+        return queryResult;
+    }
 
     @Override
     public void createNew(Customer customer) {

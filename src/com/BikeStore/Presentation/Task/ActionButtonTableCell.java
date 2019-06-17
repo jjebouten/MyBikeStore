@@ -23,7 +23,7 @@ public class ActionButtonTableCell<S> extends TableCell<S, Button> {
     }
 
     public S getCurrentItem() {
-        return (S) getTableView().getItems().get(getIndex());
+        return getTableView().getItems().get(getIndex());
     }
 
     public static <S> Callback<TableColumn<S, Button>, TableCell<S, Button>> forTableColumn(String label, Function< S, S> function) {

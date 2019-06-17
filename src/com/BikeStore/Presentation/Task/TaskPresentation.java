@@ -3,22 +3,17 @@ package com.BikeStore.Presentation.Task;
 import com.BikeStore.Data.Modal.Task;
 import com.BikeStore.Logic.Task.TaskLogic;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
-import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
-import static com.FieldValidator.FieldValidator.isNullOrEmptyString;
 
 public class TaskPresentation extends TaskLogic implements Initializable {
 
@@ -52,7 +47,7 @@ public class TaskPresentation extends TaskLogic implements Initializable {
         taskDate.setCellValueFactory(new PropertyValueFactory<>("taskDate"));
         taskReadyDate.setCellValueFactory(new PropertyValueFactory<>("taskReadyDate"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
-        button.setCellFactory(ActionButtonTableCell.<Task>forTableColumn("Set Ready", (Task currentTask) -> {
+        button.setCellFactory(ActionButtonTableCell.forTableColumn("Set Ready", (Task currentTask) -> {
             setDateReady(currentTask.getBike().getBikeId(), currentTask.getTaskId());
             reload();
             return null;
@@ -67,9 +62,11 @@ public class TaskPresentation extends TaskLogic implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeTaskFields();
-        tableView.getItems().setAll(parseTaskList());
+        if (parseTaskList().size() > 0) {
+            tableView.getItems().setAll(parseTaskList());
+        } else {
+            alertError("Error 1558345465", "Something went wrong, Could not fetch results");
+        }
     }
-
-
 
 }

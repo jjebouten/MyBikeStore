@@ -3,6 +3,8 @@ package com.BikeStore;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
+
 public class Database {
 
     private String databaseName = "java_bikestore";
@@ -19,7 +21,7 @@ public class Database {
             return conn;
 
         } catch (Exception e) {
-            System.out.println("DB error");
+            alertError("Something went wrong", "Database Connection failed");
             return null;
         }
 

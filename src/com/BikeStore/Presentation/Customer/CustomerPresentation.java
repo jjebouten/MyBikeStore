@@ -11,6 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
+
 public class CustomerPresentation extends CustomerLogic implements Initializable {
 
     @FXML
@@ -40,7 +42,11 @@ public class CustomerPresentation extends CustomerLogic implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeCustomerFields();
-        tableView.getItems().setAll(parseCustomerList());
+        if (parseCustomerList().size() > 0) {
+            tableView.getItems().setAll(parseCustomerList());
+        } else {
+            alertError("Error 1558345464", "Something went wrong, Could not fetch results");
+        }
     }
 
 }

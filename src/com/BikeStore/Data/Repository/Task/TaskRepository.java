@@ -7,7 +7,6 @@ import com.BikeStore.Data.Repository.Bike.BikeDefaultRepository;
 import com.BikeStore.Data.Repository.Customer.CustomerRepository;
 import com.BikeStore.Data.Repository.Queryable;
 import com.BikeStore.Data.Repository.Repository;
-import com.BikeStore.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

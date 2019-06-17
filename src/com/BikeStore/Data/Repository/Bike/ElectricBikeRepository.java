@@ -1,17 +1,14 @@
 package com.BikeStore.Data.Repository.Bike;
 
 import com.BikeStore.Data.Modal.ElectricBike;
-import com.BikeStore.Data.Modal.MountainBike;
 import com.BikeStore.Data.Repository.Queryable;
 import com.BikeStore.Data.Repository.Repository;
-import com.BikeStore.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ElectricBikeRepository extends Repository implements Queryable<ElectricBike> {
 
@@ -45,8 +42,7 @@ public class ElectricBikeRepository extends Repository implements Queryable<Elec
             }
             st.close();
         } catch (Exception e) {
-            System.err.println("Got an exception!");
-            System.err.println(e.getMessage());
+            return queryResult;
         }
         return queryResult;
     }
