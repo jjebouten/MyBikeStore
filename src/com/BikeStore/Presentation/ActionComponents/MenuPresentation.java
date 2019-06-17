@@ -1,5 +1,6 @@
 package com.BikeStore.Presentation.ActionComponents;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -118,4 +119,11 @@ public class MenuPresentation {
         Pane newContent = fxmlLoader.load();
         setNewContent(newContent);
     }
+
+    public void viewImportCustomers() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/importCustomers.fxml"));
+        Pane newContent = fxmlLoader.load();
+        setNewContent(newContent);
+    }
+
 }
