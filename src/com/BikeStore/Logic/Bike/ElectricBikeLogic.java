@@ -6,9 +6,11 @@ import com.BikeStore.Data.Repository.Bike.ElectricBikeRepository;
 import java.util.List;
 
 
-public class ElectricBikeLogic extends ElectricBikeRepository {
+public class ElectricBikeLogic {
 
-    private static String bikeType = "ElectricBike";
+    private ElectricBikeRepository electricBikeRepository = new ElectricBikeRepository();
+
+    private final String bikeType = "ElectricBike";
     private ElectricBike electricBike = new ElectricBike(0, "", "", 0.0, 0, "", 0.0);
 
     public void createNewElectricBike(String bikeId, String bikeBrand, String rimSize, String numberOfGears, String power) {
@@ -18,11 +20,11 @@ public class ElectricBikeLogic extends ElectricBikeRepository {
         electricBike.setRimSize(Double.parseDouble(rimSize));
         electricBike.setNumberOfGears(Integer.parseInt(numberOfGears));
         electricBike.setPower(Double.parseDouble(power));
-        createNew(electricBike);
+        electricBikeRepository.createNew(electricBike);
     }
 
     public List parseElectricBikeList() {
-        return getAll();
+        return electricBikeRepository.getAll();
     }
 
 }

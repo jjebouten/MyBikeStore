@@ -12,7 +12,9 @@ import java.util.ResourceBundle;
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertWarning;
 
-public class NewTaskReparationPresentation extends TaskLogic implements Initializable {
+public class NewTaskReparationPresentation implements Initializable {
+
+    private TaskLogic taskLogic = new TaskLogic();
 
     @FXML
     private ComboBox cmbCustomer;
@@ -24,16 +26,16 @@ public class NewTaskReparationPresentation extends TaskLogic implements Initiali
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cmbCustomer.getItems().clear();
-        cmbCustomer.getItems().addAll(getAllCustomerIdsInObservableList());
+        cmbCustomer.getItems().addAll(taskLogic.getAllCustomerIdsInObservableList());
         cmbBike.getItems().clear();
-        cmbBike.getItems().addAll(getAllBikeIdsInObservableList());
+        cmbBike.getItems().addAll(taskLogic.getAllBikeIdsInObservableList());
     }
 
     public void btnCreateNewReparationTask() {
         Integer customerId = (Integer) cmbCustomer.getValue();
         Integer bikeId = (Integer) cmbBike.getValue();
         String description = txtDescription.getText();
-        if (createNewReparationTask(customerId, bikeId, description)) {
+        if (taskLogic.createNewReparationTask(customerId, bikeId, description)) {
             alertSucces("Succes", "Reparation task succesfully created");
             cmbCustomer.setValue(0);
             cmbBike.setValue(0);

@@ -13,7 +13,9 @@ import java.util.ResourceBundle;
 
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
 
-public class CustomerPresentation extends CustomerLogic implements Initializable {
+public class CustomerPresentation implements Initializable {
+
+    CustomerLogic customerLogic = new CustomerLogic();
 
     @FXML
     private TableView<Customer> tableView;
@@ -42,8 +44,8 @@ public class CustomerPresentation extends CustomerLogic implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeCustomerFields();
-        if (parseCustomerList().size() > 0) {
-            tableView.getItems().setAll(parseCustomerList());
+        if (customerLogic.parseCustomerList().size() > 0) {
+            tableView.getItems().setAll(customerLogic.parseCustomerList());
         } else {
             alertError("Error 1558345464", "Something went wrong, Could not fetch results");
         }

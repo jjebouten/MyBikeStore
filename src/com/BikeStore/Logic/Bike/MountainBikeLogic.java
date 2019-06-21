@@ -6,9 +6,11 @@ import com.BikeStore.Data.Repository.Bike.MountainBikeRepository;
 import java.util.List;
 
 
-public class MountainBikeLogic extends MountainBikeRepository {
+public class MountainBikeLogic {
 
-    private static String bikeType = "MountainBike";
+    private MountainBikeRepository mountainBikeRepository = new MountainBikeRepository();
+
+    private final String bikeType = "MountainBike";
     private MountainBike mountainBike = new MountainBike(0, "", "", 0.0, 0, "", "");
 
     public void createNewMountainBike(String bikeId, String bikeBrand, String rimSize, String numberOfGears, String bikeSuspension) {
@@ -18,11 +20,11 @@ public class MountainBikeLogic extends MountainBikeRepository {
         mountainBike.setRimSize(Double.parseDouble(rimSize));
         mountainBike.setNumberOfGears(Integer.parseInt(numberOfGears));
         mountainBike.setSuspension(bikeSuspension);
-        createNew(mountainBike);
+        mountainBikeRepository.createNew(mountainBike);
     }
 
     public List parseMountainBikeList() {
-        return getAll();
+        return mountainBikeRepository.getAll();
     }
 
 }

@@ -9,7 +9,9 @@ import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.aler
 import static com.FieldValidator.FieldValidator.isNullOrEmptyString;
 import static com.FieldValidator.FieldValidator.isValidEmailAddress;
 
-public class NewCustomerPresentation extends CustomerLogic {
+public class NewCustomerPresentation {
+
+    CustomerLogic customerLogic = new CustomerLogic();
 
     @FXML
     private TextField txtFirstname;
@@ -33,7 +35,7 @@ public class NewCustomerPresentation extends CustomerLogic {
         String email = txtEmail.getText();
 
         if (validateCustomer(firstName, lastName, address, city, email)) {
-            createNewCustomer(firstName, lastName, address, city, email);
+            customerLogic.createNewCustomer(firstName, lastName, address, city, email);
             alertSucces("Succes", "Customer succesfully created");
             txtFirstname.setText("");
             txtLastname.setText("");

@@ -15,7 +15,9 @@ import java.util.ResourceBundle;
 
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
 
-public class TaskPresentation extends TaskLogic implements Initializable {
+public class TaskPresentation implements Initializable {
+
+    private TaskLogic taskLogic = new TaskLogic();
 
     @FXML
     private TableView<Task> tableView;
@@ -48,7 +50,7 @@ public class TaskPresentation extends TaskLogic implements Initializable {
         taskReadyDate.setCellValueFactory(new PropertyValueFactory<>("taskReadyDate"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         button.setCellFactory(ActionButtonTableCell.forTableColumn("Set Ready", (Task currentTask) -> {
-            setDateReady(currentTask.getBike().getBikeId(), currentTask.getTaskId());
+            taskLogic.setDateReady(currentTask.getBike().getBikeId(), currentTask.getTaskId());
             reload();
             return null;
         }));
@@ -56,14 +58,14 @@ public class TaskPresentation extends TaskLogic implements Initializable {
 
     private void reload() {
         tableView.getItems().clear();
-        tableView.getItems().setAll(parseTaskList());
+        tableView.getItems().setAll(taskLogic.parseTaskList());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeTaskFields();
-        if (parseTaskList().size() > 0) {
-            tableView.getItems().setAll(parseTaskList());
+        if (taskLogic.parseTaskList().size() > 0) {
+            tableView.getItems().setAll(taskLogic.parseTaskList());
         } else {
             alertError("Error 1558345465", "Something went wrong, Could not fetch results");
         }

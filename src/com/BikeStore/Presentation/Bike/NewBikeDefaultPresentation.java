@@ -8,7 +8,9 @@ import javafx.scene.control.TextField;
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertError;
 import static com.FieldValidator.FieldValidator.*;
 
-class NewBikeDefaultPresentation extends BikeValidationLogic {
+class NewBikeDefaultPresentation {
+
+    private BikeValidationLogic bikeValidationLogic = new BikeValidationLogic();
 
     @FXML
     public TextField txtBikeId;
@@ -31,7 +33,7 @@ class NewBikeDefaultPresentation extends BikeValidationLogic {
             return false;
         }
 
-        if (CheckIfBikeIdExists(Integer.parseInt(bikeId))) {
+        if (bikeValidationLogic.CheckIfBikeIdExists(Integer.parseInt(bikeId))) {
             alertError("Error 1558094847", "Bike Id already exists in database");
             return false;
         }

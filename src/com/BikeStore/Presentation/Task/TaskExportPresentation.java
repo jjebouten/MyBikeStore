@@ -11,7 +11,9 @@ import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.aler
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
 import static com.FieldValidator.FieldValidator.isNullOrEmptyString;
 
-public class TaskExportPresentation extends TaskLogic {
+public class TaskExportPresentation {
+
+    private TaskLogic taskLogic = new TaskLogic();
 
     @FXML
     public ComboBox selectSorting;
@@ -20,7 +22,7 @@ public class TaskExportPresentation extends TaskLogic {
         String sortingField = Optional.ofNullable((String) selectSorting.getValue()).orElse("");
         if (validateSortingIsTrue(sortingField)) {
             alertSucces("All tasks will be exported", "Sorted on " + sortingField);
-            exportAllTasks(sortingField);
+            taskLogic.exportAllTasks(sortingField);
         }
     }
 

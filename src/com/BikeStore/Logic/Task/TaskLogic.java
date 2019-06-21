@@ -18,14 +18,15 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class TaskLogic extends TaskRepository {
+public class TaskLogic {
     private Task task = new Task(null, null, null, "", "", "", "");
+    private TaskRepository taskRepository = new TaskRepository();
     private CustomerRepository customerRepository = new CustomerRepository();
     private BikeDefaultRepository bikeRepository = new BikeDefaultRepository();
 
-    static String indicationReparation = "R";
-    static String indicationDelivery = "A";
-    static String descriptionDelivery = "Afleverbeurt";
+    private final String indicationReparation = "R";
+    private final String indicationDelivery = "A";
+    private final String descriptionDelivery = "Afleverbeurt";
 
     private String getCurrentDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -33,31 +34,31 @@ public class TaskLogic extends TaskRepository {
         return (dtf.format(localDate));
     }
 
-    protected List parseTaskList() {
-        return getAll();
+    public List parseTaskList() {
+        return taskRepository.getAll();
     }
 
-    protected void setDateReady(Integer bikeId, Integer taskId) {
+    public void setDateReady(Integer bikeId, Integer taskId) {
         setDateLastTaskOnBike(bikeId, getCurrentDate());
         setDateLastTaskOnTask(taskId, getCurrentDate());
     }
 
-    public void setDateLastTaskOnBike(Integer bikeId, String currentDate) {
+    private void setDateLastTaskOnBike(Integer bikeId, String currentDate) {
         bikeRepository.setDateLastTask(bikeId, currentDate);
     }
 
     private void setDateLastTaskOnTask(Integer taskId, String currentDate) {
-        setTaskReadyDate(taskId, currentDate);
+        taskRepository.setTaskReadyDate(taskId, currentDate);
     }
 
-    protected boolean createNewReparationTask(Integer customerId, Integer bikeId, String description) {
+    public boolean createNewReparationTask(Integer customerId, Integer bikeId, String description) {
         if (customerId != null && bikeId != null) {
             return newTaskDefault(customerId, bikeId, description, indicationReparation);
         }
         return false;
     }
 
-    protected boolean createNewDeliveryTask(Integer customerId, Integer bikeId) {
+    public boolean createNewDeliveryTask(Integer customerId, Integer bikeId) {
         if (customerId != null && bikeId != null) {
             return newTaskDefault(customerId, bikeId, descriptionDelivery, indicationDelivery);
         }
@@ -71,25 +72,25 @@ public class TaskLogic extends TaskRepository {
         task.setDescription(description);
         task.setIndication(indicationReparation);
         task.setTaskDate(getCurrentDate());
-        createNew(task);
+        taskRepository.createNew(task);
         return true;
     }
 
     private int createNewTaskId() {
-        return (getMax("TaskId", "Tasks") + 1);
+        return (taskRepository.getMax("TaskId", "Tasks") + 1);
     }
 
-    protected ObservableList getAllCustomerIdsInObservableList() {
-        return FXCollections.observableArrayList(getIntegerArrayListOfField("Customers", "CustomerId"));
+    public ObservableList getAllCustomerIdsInObservableList() {
+        return FXCollections.observableArrayList(taskRepository.getIntegerArrayListOfField("Customers", "CustomerId"));
     }
 
-    protected ObservableList getAllBikeIdsInObservableList() {
-        return FXCollections.observableArrayList(getIntegerArrayListOfField("Bikes", "BikeId"));
+    public ObservableList getAllBikeIdsInObservableList() {
+        return FXCollections.observableArrayList(taskRepository.getIntegerArrayListOfField("Bikes", "BikeId"));
     }
 
 
-    protected void exportAllTasks(String sortingField) {
-        ArrayList<Task> taskList = getAll();
+    public void exportAllTasks(String sortingField) {
+        ArrayList<Task> taskList = taskRepository.getAll();
         File csvFile = new File("TaskExport.csv");
 
         switch(sortingField) {

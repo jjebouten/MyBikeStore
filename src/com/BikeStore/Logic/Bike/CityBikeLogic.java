@@ -6,9 +6,11 @@ import com.BikeStore.Data.Repository.Bike.CityBikeRepository;
 import java.util.List;
 
 
-public class CityBikeLogic extends CityBikeRepository {
+public class CityBikeLogic {
 
-    private static String bikeType = "CityBike";
+    private CityBikeRepository cityBikeRepository = new CityBikeRepository();
+
+    private final String bikeType = "CityBike";
     private CityBike cityBike = new CityBike(0, "", "", 0.0, 0, "", "");
 
     public void createNewCityBike(String bikeId, String bikeBrand, String rimSize, String numberOfGears, String bikeBags) {
@@ -18,11 +20,11 @@ public class CityBikeLogic extends CityBikeRepository {
         cityBike.setRimSize(Double.parseDouble(rimSize));
         cityBike.setNumberOfGears(Integer.parseInt(numberOfGears));
         cityBike.setBikeBags(bikeBags);
-        createNew(cityBike);
+        cityBikeRepository.createNew(cityBike);
     }
 
     public List parseCityBikeList() {
-        return getAll();
+        return cityBikeRepository.getAll();
     }
 
 }

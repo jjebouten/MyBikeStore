@@ -11,7 +11,9 @@ import java.util.ResourceBundle;
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertSucces;
 import static com.BikeStore.Presentation.ActionComponents.AlertPresentation.alertWarning;
 
-public class NewTaskDeliveryPresentation extends TaskLogic implements Initializable {
+public class NewTaskDeliveryPresentation implements Initializable {
+
+    private TaskLogic taskLogic = new TaskLogic();
 
     @FXML
     private ComboBox cmbCustomer;
@@ -21,15 +23,15 @@ public class NewTaskDeliveryPresentation extends TaskLogic implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cmbCustomer.getItems().clear();
-        cmbCustomer.getItems().addAll(getAllCustomerIdsInObservableList());
+        cmbCustomer.getItems().addAll(taskLogic.getAllCustomerIdsInObservableList());
         cmbBike.getItems().clear();
-        cmbBike.getItems().addAll(getAllBikeIdsInObservableList());
+        cmbBike.getItems().addAll(taskLogic.getAllBikeIdsInObservableList());
     }
 
     public void btnCreateNewDeliveryTask() {
         Integer customerId = (Integer) cmbCustomer.getValue();
         Integer bikeId = (Integer) cmbBike.getValue();
-        if (createNewDeliveryTask(customerId, bikeId)) {
+        if (taskLogic.createNewDeliveryTask(customerId, bikeId)) {
             alertSucces("Succes", "Delivery task succesfully created");
             cmbCustomer.setValue(0);
             cmbBike.setValue(0);
